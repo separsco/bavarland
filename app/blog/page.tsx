@@ -1,10 +1,13 @@
-import { PlaceholderPage } from "@/components/layout/PlaceholderPage";
+import { BlogCategories } from "@/components/blog/BlogCategories";
+import { BlogHero } from "@/components/blog/BlogHero";
+import { BlogPostsSection } from "@/components/blog/BlogPostsSection";
 
 export default function BlogPage() {
   return (
-    <PlaceholderPage
-      title="وبلاگ"
-      description="محتوای این صفحه بعداً تکمیل می‌شود."
-    />
+    <>
+      <BlogHero />
+      <BlogCategories />
+      <BlogPostsSection />
+    </>
   );
 }
