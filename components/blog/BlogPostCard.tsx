@@ -1,16 +1,7 @@
 import Link from "next/link";
+import type { BlogPost } from "@/data/blog";
 import { IconSlot } from "@/components/ui/IconSlot";
 import { MediaSlot } from "@/components/ui/MediaSlot";
-
-export type BlogPost = {
-  id: string;
-  title: string;
-  excerpt: string;
-  category: string;
-  date: string;
-  readingTime: string;
-  href: string;
-};
 
 type BlogPostCardProps = {
   post: BlogPost;

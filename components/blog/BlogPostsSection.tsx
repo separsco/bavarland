@@ -2,32 +2,11 @@
 
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useMemo, useState } from "react";
-import { BlogPostCard, type BlogPost } from "@/components/blog/BlogPostCard";
+import { BlogPostCard } from "@/components/blog/BlogPostCard";
+import { blogPosts } from "@/data/blog";
 
 const PAGE_SIZE = 12;
-const TOTAL_PAGES = 20;
-
-const samplePost: Omit<BlogPost, "id" | "href"> = {
-  title: "چگونه یک برنامه‌ریزی درسی مؤثر داشته باشیم؟",
-  excerpt:
-    "در این مقاله یاد می‌گیری چطور با یک برنامه واقع‌بینانه، مطالعه را منظم کنی و به هدف‌های تحصیلی‌ات نزدیک‌تر شوی.",
-  category: "برنامه‌ریزی درسی",
-  date: "۱۴۰۲/۰۳/۰۳",
-  readingTime: "خواندن ۷ دقیقه",
-};
-
-function buildPosts(): BlogPost[] {
-  return Array.from({ length: PAGE_SIZE * TOTAL_PAGES }, (_, index) => {
-    const id = String(index + 1);
-    return {
-      ...samplePost,
-      id,
-      href: `/blog/${id}`,
-    };
-  });
-}
-
-const allPosts = buildPosts();
+const TOTAL_PAGES = Math.ceil(blogPosts.length / PAGE_SIZE);
 
 function getVisiblePages(current: number, total: number) {
   if (total <= 5) {
@@ -56,7 +35,7 @@ export function BlogPostsSection() {
 
   const pagePosts = useMemo(() => {
     const start = (page - 1) * PAGE_SIZE;
-    return allPosts.slice(start, start + PAGE_SIZE);
+    return blogPosts.slice(start, start + PAGE_SIZE);
   }, [page]);
 
   const visiblePages = getVisiblePages(page, TOTAL_PAGES);
