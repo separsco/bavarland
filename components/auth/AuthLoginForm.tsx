@@ -1,14 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
-import { MediaSlot } from "@/components/ui/MediaSlot";
+import { AuthFormShell } from "@/components/auth/AuthFormShell";
 import {
   isMobileNumberValid,
+  normalizeMobileNumber,
   validateMobileNumber,
 } from "@/data/auth";
 
 export function AuthLoginForm() {
+  const router = useRouter();
   const [mobile, setMobile] = useState("");
   const [acceptedTerms, setAcceptedTerms] = useState(false);
   const [touched, setTouched] = useState(false);
@@ -26,26 +29,25 @@ export function AuthLoginForm() {
     if (!canSubmit) {
       return;
     }
+
+    router.push(
+      `/auth/verify?phone=${encodeURIComponent(normalizeMobileNumber(mobile))}`,
+    );
   }
 
   return (
-    <section className="flex flex-1 items-center justify-center px-5 py-10 sm:px-8 sm:py-12 lg:px-10 lg:py-14">
-      <div className="w-full max-w-md">
-        <div className="mb-8 flex flex-col items-center text-center">
-          <MediaSlot label="auth-logo" className="h-16 w-36 sm:h-[4.5rem] sm:w-40" />
-        </div>
+    <AuthFormShell>
+      <div className="mb-8 text-center">
+        <h1 className="text-2xl font-extrabold text-foreground sm:text-3xl">
+          خوش اومدی به{" "}
+          <span className="text-primary">باور لند</span>
+        </h1>
+        <p className="mt-3 text-sm leading-7 text-muted sm:text-base">
+          برای ورود یا ثبت‌نام، شماره موبایلت رو وارد کن
+        </p>
+      </div>
 
-        <div className="mb-8 text-center">
-          <h1 className="text-2xl font-extrabold text-foreground sm:text-3xl">
-            خوش اومدی به{" "}
-            <span className="text-primary">باور لند</span>
-          </h1>
-          <p className="mt-3 text-sm leading-7 text-muted sm:text-base">
-            برای ورود یا ثبت‌نام، شماره موبایلت رو وارد کن
-          </p>
-        </div>
-
-        <form onSubmit={handleSubmit} className="space-y-5" noValidate>
+      <form onSubmit={handleSubmit} className="space-y-5" noValidate>
           <div>
             <div
               className={`relative rounded-2xl border bg-white transition-colors ${
@@ -116,7 +118,6 @@ export function AuthLoginForm() {
             ارسال کد تایید
           </button>
         </form>
-      </div>
-    </section>
+    </AuthFormShell>
   );
 }
