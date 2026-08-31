@@ -107,7 +107,7 @@ function PricingCard({ plan }: { plan: Plan }) {
 
 export function PricingSection() {
   return (
-    <section className="relative overflow-hidden bg-white py-16 sm:py-20">
+    <section className="relative overflow-hidden py-16 sm:py-20">
       <div className="pointer-events-none absolute inset-y-16 start-0 w-24 opacity-10 sm:w-32">
         <IconSlot label="pricing-decor-right" className="h-full w-full" />
       </div>

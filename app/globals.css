@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
+  --background: #f8fafc;
+  --surface: #ffffff;
   --foreground: #1a2332;
   --primary: #ff6b1a;
   --primary-hover: #e85f12;
@@ -12,10 +13,12 @@
   --muted: #6b7280;
   --border: #e5e7eb;
   --accent-line: #5b8def;
+  --brand-blue: #164685;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
@@ -26,11 +29,17 @@
   --color-muted: var(--muted);
   --color-border: var(--border);
   --color-accent-line: var(--accent-line);
+  --color-brand-blue: var(--brand-blue);
   --font-sans: var(--font-vazirmatn);
 }
 
+html,
 body {
+  min-height: 100dvh;
   background: var(--background);
+}
+
+body {
   color: var(--foreground);
   font-family: var(--font-vazirmatn), Tahoma, sans-serif;
 }

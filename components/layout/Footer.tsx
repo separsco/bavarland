@@ -12,7 +12,7 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-white pb-6 pt-6 sm:pb-8 sm:pt-8">
+    <footer className="pb-6 pt-6 sm:pb-8 sm:pt-8">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="overflow-hidden rounded-[2.5rem] bg-navy">
           <div className="relative flex flex-col items-center px-6 pb-10 pt-12 text-center sm:px-10 sm:pt-14">

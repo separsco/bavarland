@@ -5,8 +5,8 @@ import { MediaSlot } from "@/components/ui/MediaSlot";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden bg-sky-soft">
-      <div className="pointer-events-none absolute inset-0">
+    <section className="relative overflow-hidden bg-background">
+      <div className="pointer-events-none absolute inset-0 hidden md:block">
         <div className="absolute -start-24 top-10 h-72 w-72 rounded-full bg-sky/80 blur-3xl" />
         <div className="absolute -end-16 bottom-0 h-80 w-80 rounded-full bg-sky blur-3xl" />
       </div>
@@ -16,8 +16,10 @@ export function Hero() {
           <Badge>همراه همیشگی مسیر موفقیت تو!</Badge>
 
           <h1 className="max-w-xl text-[1.75rem] font-extrabold leading-snug text-foreground sm:text-4xl lg:text-[2.75rem] lg:leading-[1.35]">
-            هر دانش‌آموز، یک مسیر{" "}
-            <span className="text-primary">موفقیت اختصاصی</span>
+            <span className="block">هر دانش‌آموز، یک مسیر</span>
+            <span className="block">
+              موفقیت <span className="text-primary">اختصاصی</span>
+            </span>
           </h1>
 
           <p className="max-w-lg text-sm leading-7 text-muted sm:text-base sm:leading-8 lg:text-lg">

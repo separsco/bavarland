@@ -4,7 +4,7 @@ import { MediaSlot } from "@/components/ui/MediaSlot";
 
 export function AboutPreview() {
   return (
-    <section className="bg-white py-10 sm:py-16">
+    <section className="py-10 sm:py-16">
       <div className="mx-auto grid w-full max-w-7xl items-center gap-8 px-4 sm:gap-10 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:px-8">
         <MediaSlot
           label="about-preview-image"

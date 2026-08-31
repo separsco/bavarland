@@ -35,7 +35,7 @@ function ContactCard({ label, iconLabel, lines }: ContactCardProps) {
 
 export function ContactSection() {
   return (
-    <section className="bg-white pt-10 sm:pt-14">
+    <section className="pt-10 sm:pt-14">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative">
           <div className="mb-6 flex flex-col gap-8 lg:mb-0 lg:flex-row lg:items-end lg:justify-between">

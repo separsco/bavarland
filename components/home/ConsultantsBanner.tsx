@@ -6,7 +6,7 @@ const avatarSlots = ["consultant-1", "consultant-2", "consultant-3"] as const;
 
 export function ConsultantsBanner() {
   return (
-    <section className="bg-white pb-10 sm:pb-14">
+    <section className="pb-10 sm:pb-14">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-5 rounded-3xl bg-sky-soft px-5 py-6 text-center sm:flex-row sm:justify-between sm:gap-6 sm:px-8 sm:py-5 sm:text-start">
           <div className="flex flex-col items-center gap-4 sm:flex-row sm:gap-5">

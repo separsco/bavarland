@@ -20,7 +20,7 @@ const stats = [
 
 export function StatsSection() {
   return (
-    <section className="bg-white py-10 sm:py-14">
+    <section className="py-10 sm:py-14">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="relative overflow-hidden rounded-[1.75rem] bg-navy px-5 py-10 sm:rounded-[2rem] sm:px-10 sm:py-14 lg:px-14">
           <div

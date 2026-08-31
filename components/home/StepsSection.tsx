@@ -31,7 +31,7 @@ const steps = [
 
 export function StepsSection() {
   return (
-    <section className="bg-white py-16 sm:py-20">
+    <section className="py-16 sm:py-20">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-12">
           <h2 className="text-xl font-extrabold leading-snug text-foreground sm:text-3xl lg:text-4xl">

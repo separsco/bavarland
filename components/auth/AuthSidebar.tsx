@@ -17,17 +17,16 @@ export function AuthSidebar() {
   }, []);
 
   return (
-    <aside className="relative hidden min-h-[720px] w-[42%] shrink-0 overflow-hidden lg:flex lg:flex-col">
-      <Image
+    <aside className="relative z-10 hidden  min-h-[750px] w-[50%] shrink-0 overflow-visible  lg:flex lg:flex-col">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
         src="/images/Union.svg"
         alt=""
-        fill
-        priority
-        className="object-cover bg-[#164685]"
         aria-hidden
+        className="pointer-events-none absolute top-0 left-0 h-full w-auto max-w-none"
       />
 
-      <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 py-10">
+      <div className="relative z-10 flex flex-1 flex-col items-center justify-center">
         <div className="relative mx-auto w-full max-w-[320px]">
           <Image
             src="/images/Group 1171274854.svg"
@@ -40,16 +39,16 @@ export function AuthSidebar() {
         </div>
       </div>
 
-      <div className="relative z-10 px-6 pb-8">
-        <div className="rounded-3xl bg-navy/55 px-5 py-5 text-white backdrop-blur-sm sm:px-6 sm:py-6">
-          <h2 className="text-base font-bold leading-8 sm:text-lg">
+      <div className="relative z-10 flex w-full justify-center px-6 pb-8">
+        <div className="w-full mx-auto max-w-[240px] rounded-2xl bg-navy/55 px-4 py-4 text-center text-white backdrop-blur-sm sm:max-w-[460px]">
+          <h2 className="text-sm font-bold leading-7 sm:text-base sm:leading-8">
             {slide.title}
           </h2>
-          <p className="mt-2 text-sm leading-7 text-white/80">
+          <p className="mt-2 text-xs leading-6 text-white/80 sm:text-sm sm:leading-7">
             {slide.description}
           </p>
 
-          <div className="mt-5 flex items-center justify-center gap-2">
+          <div className="mt-4 flex items-center justify-center gap-2">
             {authSlides.map((item, index) => (
               <button
                 key={item.id}
@@ -66,11 +65,6 @@ export function AuthSidebar() {
           </div>
         </div>
       </div>
-
-      <div
-        aria-hidden
-        className="absolute right-0 top-1/2 z-20 -translate-y-1/2 translate-x-full border-y-[14px] border-y-transparent border-l-[18px] border-l-white"
-      />
     </aside>
   );
 }

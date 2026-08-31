@@ -18,8 +18,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="fa" dir="rtl" className={`${vazirmatn.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col bg-background font-sans text-foreground">
+    <html lang="fa" dir="rtl" className={`${vazirmatn.variable} min-h-dvh antialiased`}>
+      <body className="flex min-h-dvh flex-col bg-background font-sans text-foreground">
         <Header />
         <main className="flex flex-1 flex-col">{children}</main>
         <Footer />
