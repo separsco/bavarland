@@ -28,7 +28,7 @@ export function StatsSection() {
             className="pointer-events-none absolute inset-0 opacity-20"
             style={{
               backgroundImage:
-                "radial-gradient(circle at 20% 30%, #5b8def 0, transparent 35%), radial-gradient(circle at 80% 70%, #ff6b1a 0, transparent 30%)",
+                "radial-gradient(circle at 20% 30%, #5b8def 0, transparent 35%), radial-gradient(circle at 80% 70%, #ff5527 0, transparent 30%)",
             }}
           />
 
