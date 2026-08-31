@@ -1,10 +1,11 @@
-import { PlaceholderPage } from "@/components/layout/PlaceholderPage";
+import type { Metadata } from "next";
+import { AuthPageContent } from "@/components/auth/AuthPageContent";
+
+export const metadata: Metadata = {
+  title: "ورود / ثبت‌نام | باورلند",
+  description: "برای ورود یا ثبت‌نام در باور لند، شماره موبایل خود را وارد کنید.",
+};
 
 export default function AuthPage() {
-  return (
-    <PlaceholderPage
-      title="ورود / ثبت نام"
-      description="محتوای این صفحه بعداً تکمیل می‌شود."
-    />
-  );
+  return <AuthPageContent />;
 }
