@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import { Badge } from "@/components/ui/Badge";
-import { IconSlot } from "@/components/ui/IconSlot";
-import { MediaSlot } from "@/components/ui/MediaSlot";
 
 type ServiceId =
   | "pension"
@@ -19,6 +17,10 @@ type Service = {
   title: string;
   description: string;
   features: [string, string, string, string];
+  /** آیکون حالت فعال */
+  iconActive: string;
+  /** آیکون حالت عادی */
+  iconInactive: string;
 };
 
 const services: Service[] = [
@@ -34,6 +36,8 @@ const services: Service[] = [
       "نظارت و پیگیری مستمر",
       "ارتباط آسان و مستقیم",
     ],
+    iconActive: "/images/monitor-recorder.svg",
+    iconInactive: "/images/monitor-recorder2.svg",
   },
   {
     id: "planning",
@@ -47,6 +51,8 @@ const services: Service[] = [
       "بازنگری دوره‌ای برنامه",
       "هماهنگی با سطح پیشرفت",
     ],
+    iconActive: "/images/calendar.svg",
+    iconInactive: "/images/calendar2.svg",
   },
   {
     id: "vip",
@@ -60,6 +66,8 @@ const services: Service[] = [
       "تحلیل نقاط ضعف و قوت",
       "برنامه اصلاحی اختصاصی",
     ],
+    iconActive: "/images/headphone2.svg",
+    iconInactive: "/images/headphone.svg",
   },
   {
     id: "followup",
@@ -73,6 +81,8 @@ const services: Service[] = [
       "یادآوری اهداف هفتگی",
       "پشتیبانی در لحظهٔ نیاز",
     ],
+    iconActive: "/images/call-calling.svg",
+    iconInactive: "/images/call-calling2.svg",
   },
   {
     id: "major",
@@ -86,6 +96,8 @@ const services: Service[] = [
       "معرفی مسیرهای شغلی",
       "مشاوره خانواده و دانش‌آموز",
     ],
+    iconActive: "/images/award.svg",
+    iconInactive: "/images/award2.svg",
   },
   {
     id: "academy",
@@ -99,8 +111,29 @@ const services: Service[] = [
       "بررسی تمام دروس",
       "تقویت نقاط ضعف",
     ],
+    iconActive: "/images/video-play.svg",
+    iconInactive: "/images/video-play2.svg",
   },
 ];
+
+function ServiceTabIcon({
+  service,
+  isActive,
+  className,
+}: {
+  service: Service;
+  isActive: boolean;
+  className: string;
+}) {
+  return (
+    <img
+      src={isActive ? service.iconActive : service.iconInactive}
+      alt=""
+      aria-hidden
+      className={`shrink-0 object-contain ${className}`}
+    />
+  );
+}
 
 function ServiceTabs({
   activeId,
@@ -113,7 +146,7 @@ function ServiceTabs({
 }) {
   if (variant === "mobile") {
     return (
-      <div className="mb-6 grid grid-cols-2 gap-3 md:hidden">
+      <div className="grid grid-cols-2 gap-3 md:hidden">
         {services.map((service) => {
           const isActive = service.id === activeId;
 
@@ -122,15 +155,15 @@ function ServiceTabs({
               key={service.id}
               type="button"
               onClick={() => onChange(service.id)}
-              className={`inline-flex min-h-[52px] items-center justify-center gap-2 rounded-2xl border px-3 py-3 text-center text-xs font-medium transition-colors sm:text-sm ${
-                isActive
+              className={`inline-flex min-h-[52px] items-center justify-center gap-2 rounded-2xl border px-3 py-3 text-center text-xs font-medium transition-colors sm:text-sm ${isActive
                   ? "border-primary bg-white text-primary shadow-sm"
                   : "border-border bg-white text-foreground"
-              }`}
+                }`}
             >
-              <IconSlot
-                label={`service-tab-icon-${service.id}`}
-                className="size-4 shrink-0"
+              <ServiceTabIcon
+                service={service}
+                isActive={isActive}
+                className="size-4"
               />
               <span>{service.label}</span>
             </button>
@@ -141,7 +174,7 @@ function ServiceTabs({
   }
 
   return (
-    <div className="mb-8 hidden gap-2 md:flex md:flex-wrap md:justify-center">
+    <div className="hidden w-full md:flex md:flex-nowrap md:items-end md:justify-between md:gap-1 lg:justify-center lg:gap-3 xl:gap-8">
       {services.map((service) => {
         const isActive = service.id === activeId;
 
@@ -150,17 +183,27 @@ function ServiceTabs({
             key={service.id}
             type="button"
             onClick={() => onChange(service.id)}
-            className={`inline-flex shrink-0 items-center gap-2 rounded-full px-4 py-2.5 text-sm transition-colors ${
-              isActive
-                ? "bg-sky font-semibold text-primary"
-                : "font-medium text-muted hover:bg-sky-soft hover:text-foreground"
-            }`}
+            className={`relative inline-flex shrink-0 items-center gap-1.5 px-1.5 pt-1 pb-3 text-xs transition-colors lg:gap-2 lg:px-3 lg:text-sm xl:px-4 ${isActive
+                ? "font-semibold text-primary"
+                : "font-medium text-muted"
+              }`}
           >
-            <IconSlot
-              label={`service-tab-icon-${service.id}`}
-              className="size-5"
+            <ServiceTabIcon
+              service={service}
+              isActive={isActive}
+              className="size-4 lg:size-5"
             />
-            {service.label}
+            <span className="whitespace-nowrap">{service.label}</span>
+            {isActive && (
+              <img
+                src="/images/Unionicon.svg"
+                alt=""
+                aria-hidden
+                width={86}
+                height={25}
+                className="pointer-events-none absolute bottom-0 left-1/2 z-10 h-[25px] w-[86px] -translate-x-1/2 translate-y-[calc(100%-1px)]"
+              />
+            )}
           </button>
         );
       })}
@@ -173,7 +216,7 @@ export function ServicesSection() {
   const active = services.find((service) => service.id === activeId) ?? services[0];
 
   return (
-    <section className="py-12 sm:py-16 lg:py-20">
+    <section className="py-12 sm:py-16 ">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-8 flex max-w-3xl flex-col items-center gap-3 text-center sm:mb-10 sm:gap-4">
           <Badge className="!bg-[#E8EDF3] !text-brand-blue px-11 py-2 text-sm">خدمات ما</Badge>
@@ -182,48 +225,67 @@ export function ServicesSection() {
             <span className="text-primary">موفقیت</span> نیاز داری، اینجاست!
           </h2>
           <p className="text-sm leading-7 text-muted sm:text-base sm:leading-8">
-            روی هر خدمت بزن تا جزئیاتش را ببینی؛ از اولین روز مطالعه تا رسیدن به
-            هدفت کنارتمون هستیم.
+            از اولین روز مطالعه تا رسیدن به هدفت، در هر قدم همراهت هستیم . <br />برای مشاهده توضیحات هر خدمت، روی آن کلیک کنید.
           </p>
         </div>
 
-        <ServiceTabs activeId={activeId} onChange={setActiveId} variant="mobile" />
-        <ServiceTabs activeId={activeId} onChange={setActiveId} variant="desktop" />
+        <div className="overflow-hidden rounded-md border border-border bg-white shadow-sm sm:rounded-[2rem]">
+          <div className="relative border-b border-border px-4 pt-3 pb-4 sm:px-6 sm:pt-4 sm:pb-4 md:pb-0 lg:px-8">
+            <ServiceTabs activeId={activeId} onChange={setActiveId} variant="mobile" />
+            <ServiceTabs activeId={activeId} onChange={setActiveId} variant="desktop" />
+          </div>
 
-        <div className="grid items-center gap-6 rounded-[1.75rem] border border-border bg-white p-5 shadow-sm sm:gap-8 sm:rounded-[2rem] sm:p-8 lg:grid-cols-2 lg:gap-10 lg:p-10">
-          <MediaSlot
-            label={`service-illustration-${active.id}`}
-            className="mx-auto aspect-[4/3] w-full max-w-md rounded-3xl lg:order-2"
-          />
+          <div className="grid items-center gap-6 px-5 py-6 sm:gap-8 sm:px-8 sm:py-8 lg:grid-cols-2 lg:gap-10 lg:px-10 lg:py-10">
+            <div className="relative mx-auto w-full max-w-[578px] lg:order-2">
+              <img
+                src="/images/Group 1171274866.svg"
+                alt={`تصویر ${active.label}`}
+                width={578}
+                height={417}
+                loading="eager"
+                decoding="async"
+                className="block h-auto w-full object-contain"
+              />
+            </div>
 
-          <div className="flex flex-col gap-4 sm:gap-5 lg:order-1">
-            <h3 className="text-lg font-bold leading-8 text-foreground sm:text-xl lg:text-2xl">
-              {active.title.split("باورلند").length > 1 ? (
-                <>
-                  {active.title.split("باورلند")[0]}
-                  <span className="text-primary">باورلند</span>
-                </>
-              ) : (
-                active.title
-              )}
-            </h3>
-            <p className="text-sm leading-7 text-muted sm:text-base sm:leading-8">
-              {active.description}
-            </p>
+            <div className="flex flex-col gap-4 sm:gap-5 lg:order-1">
+              <h3 className="text-lg font-bold leading-8 text-foreground max-w-[400px] sm:text-xl lg:text-2xl">
+                {active.title.includes("؛") ? (
+                  <>
+                    <span className="text-primary">
+                      {active.title.split("؛")[0]}
+                    </span>
+                    ؛{active.title.split("؛").slice(1).join("؛")}
+                  </>
+                ) : active.title.includes("باورلند") ? (
+                  <>
+                    {active.title.split("باورلند")[0]}
+                    <span className="text-primary">باورلند</span>
+                    {active.title.split("باورلند")[1]}
+                  </>
+                ) : (
+                  active.title
+                )}
+              </h3>
+              <p className="text-sm leading-7 text-muted sm:text-base sm:leading-8">
+                {active.description}
+              </p>
 
-            <ul className="grid gap-3 sm:grid-cols-2 sm:gap-4">
-              {active.features.map((feature) => (
-                <li
-                  key={feature}
-                  className="flex items-center gap-3 rounded-2xl bg-sky-soft px-3 py-3 sm:rounded-none sm:bg-transparent sm:px-0 sm:py-0"
-                >
-                  <span className="h-8 w-1 shrink-0 rounded-full bg-accent-line sm:mt-1 sm:h-10" />
-                  <span className="text-sm font-medium leading-6 text-foreground">
-                    {feature}
-                  </span>
-                </li>
-              ))}
-            </ul>
+              <ul className="grid gap-3 sm:grid-cols-2 sm:gap-4">
+                {active.features.map((feature) => (
+                  <li
+                    key={feature}
+                    className="relative flex items-center overflow-hidden rounded-xl bg-[#f3f4f6]"
+                  >
+                    {/* <span className="absolute inset-y-0 start-0 w-1 bg-accent-line" /> */}
+                    <img src="/images/Union3.svg" alt="" />
+                    <span className="text-sm pr-3 font-medium leading-6 text-foreground">
+                      {feature}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </div>
