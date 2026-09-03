@@ -21,9 +21,9 @@ export function Hero() {
                 هر دانش‌آموز، یک{" "}
                 <span className="relative inline-block">
                   <svg className="lg:block hidden" xmlns="http://www.w3.org/2000/svg" width="71" height="36" viewBox="0 0 71 36" fill="none">
-                    <path d="M19.922 35.1315L0.25 23.7129" stroke="#FF5527" stroke-miterlimit="10" />
-                    <path d="M42.8812 35.129L33.0193 0.135246" stroke="#FF5527" stroke-miterlimit="10" />
-                    <path d="M58.7924 35.1326L67.7503 18.6771" stroke="#FF5527" stroke-miterlimit="10" />
+                    <path d="M19.922 35.1315L0.25 23.7129" stroke="#FF5527" strokeMiterlimit="10" />
+                    <path d="M42.8812 35.129L33.0193 0.135246" stroke="#FF5527" strokeMiterlimit="10" />
+                    <path d="M58.7924 35.1326L67.7503 18.6771" stroke="#FF5527" strokeMiterlimit="10" />
                   </svg>
                   مسیر
                 </span>
