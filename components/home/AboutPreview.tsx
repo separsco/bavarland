@@ -5,7 +5,7 @@ export function AboutPreview() {
     <section className="py-10 sm:py-16">
       <div className="mx-auto grid w-full max-w-7xl items-center gap-8 px-4 sm:gap-10 sm:px-6 lg:grid-cols-2 lg:gap-14 lg:px-8">
         <div className="order-2 flex flex-col items-center gap-5 text-center lg:order-1 lg:items-start lg:text-start">
-          <h2 className="flex items-center gap-3 text-xl font-extrabold text-foreground sm:text-2xl lg:text-3xl">
+          <h2 className="flex items-center gap-3 text-xl font-medium  text-foreground sm:text-2xl lg:text-3xl">
             <img
               src="/images/Rectangle 240662875.svg"
               alt=""

@@ -12,9 +12,10 @@ const socialLinks = [
 
 export function Footer() {
   return (
-    <footer className="pb-6 pt-6 sm:pb-8 sm:pt-8">
+    <footer className="pb-6 pt-6 sm:pb-8 sm:pt-8 mt-22">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="overflow-hidden rounded-[2.5rem] bg-navy">
+          <img src="/images/footer-bg.png" alt="footer-bg" className="w-full h-full object-cover" />
           <div className="relative flex flex-col items-center px-6 pb-10 pt-12 text-center sm:px-10 sm:pt-14">
             <span className="absolute start-1/2 top-0 flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-primary">
               <IconSlot label="footer-badge-icon" className="size-5" />

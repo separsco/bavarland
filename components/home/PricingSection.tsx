@@ -11,7 +11,7 @@ import {
 function ActiveIndicator() {
   return (
     <svg
-      className="absolute mx-auto left-0 right-0 bottom-0 h-3 w-10  text-primary"
+      className="pointer-events-none absolute start-1/2 bottom-0 mx-auto left-0 right-0 h-3 w-10 -translate-x-1/2 text-primary"
       xmlns="http://www.w3.org/2000/svg"
       width="39"
       height="12"
@@ -47,32 +47,28 @@ function PricingCard({
           onSelect();
         }
       }}
-      className={`relative flex h-full cursor-pointer flex-col rounded-3xl border-2 bg-white p-6  transition-colors sm:p-7 ${
-        selected ? "border-primary" : "border-transparent hover:border-border"
-      }`}
+      className={`relative flex h-full cursor-pointer flex-col rounded-3xl border-2 bg-white p-6 transition-colors sm:p-7 ${selected ? "border-primary" : "border-transparent hover:border-border"
+        }`}
     >
       <div className="mb-4 flex items-start justify-between gap-3">
         <div className="min-w-0">
-      
           <img src="/images/Target Center 1.svg" alt="" className="size-6" />
-       
-          <h3 className="text-lg font-medium text-foreground sm:text-4xl pt-3">
+
+          <h3 className="pt-3 text-lg font-medium text-foreground sm:text-4xl">
             {plan.title}
           </h3>
           <p className="mt-1.5 text-base leading-7 text-[#54555D]">
             {plan.description}
           </p>
         </div>
-
       </div>
 
-      <p className="mb-5 flex items-center gap-2">
-       <div className=" text-primary text-2xl font-bold">
-       <span className="">{plan.price}</span>{" "}
-       <span className="">تومان</span>
-       </div>
-        <span className="text-sm text-[#6D6D74]">{plan.tagline}</span>{" "}
-      </p>
+      <div className="mb-5 flex items-center gap-2">
+        <div className="text-2xl font-bold text-primary">
+          <span>{plan.price}</span> <span>تومان</span>
+        </div>
+        <span className="text-sm text-[#6D6D74]">{plan.tagline}</span>
+      </div>
 
       <ul className="mb-6 flex flex-1 list-disc flex-col gap-2.5 ps-5 text-sm leading-7 text-muted marker:text-muted">
         {plan.features.map((feature) => (
@@ -80,18 +76,24 @@ function PricingCard({
         ))}
       </ul>
 
-      <Button
+      {/* <Button
         href={`/checkout/${plan.id}`}
         variant={selected ? "primary" : "navy"}
         size="lg"
-        className={`w-[40%] rounded-full ${
+        className={`w-[40%] rounded-full !gap-1 sm:!gap-1.5 lg:!gap-2.5 ${
           selected ? "!bg-primary hover:!bg-primary-hover" : "!bg-[#164685]"
         }`}
-        endSlot={<ChevronLeft className="size-5" />}
+        endSlot={<ChevronLeft className="size-3 shrink-0 lg:size-5" />}
         onClick={(event) => event.stopPropagation()}
       >
         خرید اشتراک
-      </Button>
+      </Button> */}
+
+      <button className={`w-[40%] rounded-full text-white flex items-center py-2 justify-center !gap-1 sm:!gap-1.5 lg:!gap-2.5 ${selected ? "!bg-primary hover:!bg-primary-hover" : "!bg-[#164685]"
+        }`} onClick={(event) => event.stopPropagation()}>
+        خرید اشتراک
+        <ChevronLeft className="size-5 shrink-0" />
+      </button>
 
       {selected && <ActiveIndicator />}
     </article>
