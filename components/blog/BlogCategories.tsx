@@ -22,7 +22,12 @@ export function BlogCategories() {
   return (
     <section className="mx-auto w-full max-w-7xl px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14">
       <h2 className="mb-6 flex items-center gap-3 text-xl font-extrabold text-foreground sm:mb-8 sm:text-2xl lg:text-3xl">
-        <span className="h-7 w-1 shrink-0 rounded-full bg-accent-line sm:h-8" />
+      <img
+              src="/images/Rectangle 240662875.svg"
+              alt=""
+              aria-hidden
+              className=" h-8 w-auto "
+            />
         <span>
           دسته‌بندی مقاله‌های{" "}
           <span className="text-primary">باورلند</span>

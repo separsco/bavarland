@@ -1,34 +1,46 @@
 import Link from "next/link";
-import { IconSlot } from "@/components/ui/IconSlot";
-import { MediaSlot } from "@/components/ui/MediaSlot";
 
 const socialLinks = [
-  { id: "facebook", href: "#", label: "فیسبوک" },
-  { id: "twitter", href: "#", label: "توییتر" },
-  { id: "whatsapp", href: "#", label: "واتساپ" },
-  { id: "instagram", href: "#", label: "اینستاگرام" },
-  { id: "telegram", href: "#", label: "تلگرام" },
+  { id: "instagram", href: "#", label: "اینستاگرام", src: "/images/instagram.svg" },
+  { id: "linkedin", href: "#", label: "لینکدین", src: "/images/linkdin.svg" },
+  { id: "soroush", href: "#", label: "سروش", src: "/images/Soroush-color 1.svg" },
+  { id: "telegram", href: "#", label: "تلگرام", src: "/images/telegram.svg" },
+  { id: "whatsapp", href: "#", label: "واتساپ", src: "/images/whatsapp.svg" },
 ] as const;
 
 export function Footer() {
   return (
-    <footer className="pb-6 pt-6 sm:pb-8 sm:pt-8 mt-22">
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="overflow-hidden rounded-[2.5rem] bg-navy">
-          <img src="/images/footer-bg.png" alt="footer-bg" className="w-full h-full object-cover" />
-          <div className="relative flex flex-col items-center px-6 pb-10 pt-12 text-center sm:px-10 sm:pt-14">
-            <span className="absolute start-1/2 top-0 flex size-10 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-primary">
-              <IconSlot label="footer-badge-icon" className="size-5" />
-            </span>
+    <footer className="mt-22 pb-6 pt-12 sm:pb-8 sm:pt-14">
+      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+       <img src="/images/ChatGPT Image Aug 3, 2026, 03_10_26 AM-Photoroom 2.svg" alt="" aria-hidden className="absolute left-1/2 top-0 z-20 h-8 w-16 -translate-x-1/2 -translate-y-full" />
+        <div className="overflow-hidden rounded-[2.5rem]">
+          <div className="relative bg-brand-blue">
+            <svg
+              aria-hidden
+              viewBox="0 0 86 17"
+              fill="none"
+              className="pointer-events-none absolute left-1/2 top-0 z-20 h-[26px] w-[200px] -translate-x-1/2 text-background"
+            >
+              <path
+                d="M59.0518 9.06641C49.6563 9.06652 44.4837 13.85 42.3193 16.55C41.931 17.02 40.2436 17.02 39.8555 16.55C37.691 13.85 32.5185 9.06641 23.123 9.06641H59.0518ZM85.2188 0C85.2188 5.00634 81.094 9.06445 76.0059 9.06445H9.21289C4.12478 9.06445 0 5.00634 0 0H85.2188Z"
+                fill="currentColor"
+              />
+            </svg>
 
-            <MediaSlot label="footer-logo" className="mb-6 h-12 w-40" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <div
+              className="h-full w-full bg-[#164685]"
+            />
 
-            <p className="max-w-3xl text-sm leading-8 text-white/85 sm:text-base sm:leading-8">
-              مجموعه‌ای از خدمات تخصصی مانند برنامه‌ریزی شخصی، پانسیون مطالعاتی،
-              مشاوره تخصصی، پیگیری تلفنی و گزارش‌های تحلیلی را در کنار هم قرار
-              داده‌ایم تا هر دانش‌آموز بتواند با آرامش و اطمینان، مسیر رسیدن به
-              هدف خود را طی کند.
-            </p>
+            <div className="relative z-10 flex flex-col items-center px-6 pb-10 pt-16 text-center sm:px-10">
+            <Link href="/" className="flex shrink-0 items-center gap-2" aria-label="باورلند">
+              <img src="/images/01 2.svg" alt="باورلند" className="" />
+            </Link>
+
+              <p className="max-w-2xl text-sm leading-8 text-white/85 sm:text-base sm:leading-8 mt-4">
+              مجموعه‌ای از خدمات تخصصی مانند برنامه‌ریزی شخصی، پانسیون مطالعاتی، مشاوره تخصصی، پیگیری تلفنی و گزارش‌های تحلیلی را در کنار هم قرار داده‌ایم تا هر دانش‌آموز بتواند با آرامش و اطمینان، مسیر رسیدن به هدف خود را طی کند.
+              </p>
+            </div>
           </div>
 
           <div className="flex flex-col items-center gap-3 bg-primary px-5 py-5 sm:flex-row sm:justify-between sm:gap-6 sm:px-8 sm:py-4">
@@ -46,11 +58,13 @@ export function Footer() {
                   <Link
                     href={social.href}
                     aria-label={social.label}
-                    className="inline-flex size-9 items-center justify-center rounded-full bg-white/15 transition-colors hover:bg-white/25"
+                    className="inline-flex size-9 items-center justify-center  transition-colors hover:bg-white/25"
                   >
-                    <IconSlot
-                      label={`social-${social.id}-icon`}
-                      className="size-4"
+                    <img
+                      src={social.src}
+                      alt=""
+                      aria-hidden
+                      className="size-5 object-contain"
                     />
                   </Link>
                 </li>
