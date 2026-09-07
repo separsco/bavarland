@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DashboardSectionPage } from "@/components/dashboard/DashboardSectionPage";
+import { AcademyPageContent } from "@/components/dashboard/AcademyPageContent";
 
 export const metadata: Metadata = {
   title: "آکادمی | داشبورد باورلند",
@@ -7,11 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function DashboardAcademyPage() {
-  return (
-    <DashboardSectionPage
-      title="آکادمی"
-      description="ویدیوها و محتوای آموزشی آکادمی باورلند."
-      icon="dashboard-nav-academy"
-    />
-  );
+  return <AcademyPageContent />;
 }
