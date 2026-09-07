@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DashboardSectionPage } from "@/components/dashboard/DashboardSectionPage";
+import { ConsultingPageContent } from "@/components/dashboard/ConsultingPageContent";
 
 export const metadata: Metadata = {
   title: "مشاوره VIP | داشبورد باورلند",
@@ -7,11 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function DashboardConsultingPage() {
-  return (
-    <DashboardSectionPage
-      title="مشاوره (VIP)"
-      description="ارتباط با مشاور و مشاهده زمان جلسات مشاوره."
-      icon="dashboard-nav-consulting"
-    />
-  );
+  return <ConsultingPageContent />;
 }
