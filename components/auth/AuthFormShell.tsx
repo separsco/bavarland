@@ -9,8 +9,9 @@ export function AuthFormShell({ children }: AuthFormShellProps) {
   return (
     <section className="relative z-0 flex flex-1 items-center justify-center bg-white px-5 py-10 sm:px-8 sm:py-12 lg:px-10 lg:py-14">
       <div className="w-full max-w-md">
-        <div className="mb-8 flex flex-col items-center text-center">
-          <MediaSlot label="auth-logo" className="h-16 w-36 sm:h-[4.5rem] sm:w-40" />
+        <div className="mb-8 flex flex-col items-center text-center xl:items-start">
+          {/* <MediaSlot label="auth-logo" className="h-16 w-36 sm:h-[4.5rem] sm:w-40" /> */}
+          <img src="/images/bavariconauth.svg" alt="" />
         </div>
         {children}
       </div>

@@ -3,62 +3,9 @@
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { AuthFormShell } from "@/components/auth/AuthFormShell";
-import {
-  isMobileNumberValid,
-  MOBILE_NUMBER_MAX_LENGTH,
-  normalizeMobileNumber,
-} from "@/data/auth";
+import { PhoneField } from "@/components/auth/PhoneField";
+import { isMobileNumberValid, normalizeMobileNumber } from "@/data/auth";
 import { gradeLevels, isSignupFormValid, studyFields } from "@/data/signup";
-
-function PhoneField({
-  id,
-  label,
-  value,
-  onChange,
-  onBlur,
-  placeholder = "09121234567",
-}: {
-  id: string;
-  label: string;
-  value: string;
-  onChange: (value: string) => void;
-  onBlur?: () => void;
-  placeholder?: string;
-}) {
-  return (
-    <div>
-      <label htmlFor={id} className="mb-2 block text-sm font-medium text-foreground">
-        {label}
-      </label>
-      <div className="flex overflow-hidden rounded-xl border border-border bg-sky-soft/60">
-        <input
-          id={id}
-          name={id}
-          type="tel"
-          inputMode="numeric"
-          autoComplete="tel"
-          placeholder={placeholder}
-          value={value}
-          maxLength={MOBILE_NUMBER_MAX_LENGTH}
-          onChange={(event) => {
-            onChange(
-              normalizeMobileNumber(event.target.value).slice(
-                0,
-                MOBILE_NUMBER_MAX_LENGTH,
-              ),
-            );
-          }}
-          onBlur={onBlur}
-          dir="ltr"
-          className="h-12 w-full bg-white px-4 text-left text-sm text-foreground outline-none placeholder:text-muted/70"
-        />
-        <span className="flex h-12 items-center border-e border-border bg-[#F7F7F8] px-4 text-sm text-muted">
-          ۹۸+
-        </span>
-      </div>
-    </div>
-  );
-}
 
 function SelectField({
   id,
