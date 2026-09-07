@@ -29,10 +29,11 @@ export function BlogPostDetail({ post, relatedPosts }: BlogPostDetailProps) {
 
           <div className="mt-5">
             <div className="inline-flex items-center gap-2.5">
-              <MediaSlot
+              {/* <MediaSlot
                 label={`blog-author-avatar-${post.id}`}
                 className="size-9 rounded-full bg-sky"
-              />
+              /> */}
+              <img src="/images/Image.svg" alt="" className="h-9 w-9"/>
               <span className="font-medium  text-xl">{post.author}</span>
             </div>
             <div className=" flex flex-wrap items-center gap-x-4 gap-y-2  text-xs text-muted sm:text-sm">
@@ -72,10 +73,11 @@ export function BlogPostDetail({ post, relatedPosts }: BlogPostDetailProps) {
           </div>
         </header>
 
-        <MediaSlot
+        {/* <MediaSlot
           label={`blog-detail-cover-${post.id}`}
           className="mb-8 aspect-[16/9] w-full rounded-[1.5rem] sm:mb-10 sm:rounded-[2rem]"
-        />
+        /> */}
+        <img src="/images/Hero Image.svg" alt="" />
 
         <div className="space-y-8 text-sm leading-8 text-muted sm:text-base sm:leading-8">
           <p className="text-foreground">{post.content.intro}</p>

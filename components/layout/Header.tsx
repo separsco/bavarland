@@ -18,7 +18,15 @@ const navItems = [
 function ActiveNavIndicator() {
   return (
 
-    <svg className="absolute start-1/2 lg:-bottom-4 md:-bottom-3 h-2 w-6 -translate-x-1/2 text-primary lg:-bottom-5 lg:h-3 lg:w-10" xmlns="http://www.w3.org/2000/svg" width="39" height="12" viewBox="0 0 39 12" fill="none">
+    <svg
+      className="pointer-events-none absolute bottom-0 left-1/2 h-2 w-6 -translate-x-1/2 text-primary lg:h-3 lg:w-10"
+      xmlns="http://www.w3.org/2000/svg"
+      width="39"
+      height="12"
+      viewBox="0 0 39 12"
+      fill="none"
+      aria-hidden
+    >
       <path d="M27.0234 6.56152C23.7153 6.56152 21.5507 3.4804 20.2773 0.727539C19.8286 -0.242693 17.775 -0.242692 17.3262 0.727539C16.0528 3.48025 13.8888 6.56125 10.5811 6.56152H27.0234ZM39 11.5947C39 8.81541 37.1125 6.56276 34.7842 6.5625H4.21582C1.88745 6.56275 0 8.8154 0 11.5947H39Z" fill="currentColor" />
     </svg>
   );
@@ -35,7 +43,7 @@ function NavLinks({ pathname, className }: { pathname: string; className?: strin
           <Link
             key={item.href}
             href={item.href}
-            className={`relative whitespace-nowrap px-1.5 py-1.5 text-[11px] transition-colors md:px-2 md:py-2 md:text-xs lg:px-3 lg:text-sm ${isActive
+            className={`relative flex self-stretch items-center whitespace-nowrap px-1.5 text-[11px] transition-colors md:px-2 md:text-xs lg:px-3 lg:text-sm ${isActive
               ? "font-semibold text-foreground"
               : "font-medium text-muted hover:text-foreground"
               }`}
@@ -222,7 +230,7 @@ export function Header() {
 
           <NavLinks
             pathname={pathname}
-            className="flex min-w-0 flex-1 items-center justify-center gap-0 lg:gap-1 xl:gap-2"
+            className="flex min-w-0 flex-1 self-stretch items-stretch justify-center gap-0 lg:gap-1 xl:gap-2"
           />
 
           <HeaderActions phoneClassName="!border-brand-blue hover:bg-sky-soft" />

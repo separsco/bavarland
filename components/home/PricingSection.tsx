@@ -146,7 +146,7 @@ export function PricingSection() {
           </h2>
           <p className="mt-3 text-sm leading-7 text-muted sm:mt-4 sm:text-base sm:leading-8">
             درس خوندن وقتی تنها باشی سخته؛ اما با باور لند
-            <br />
+          
             هیچ‌وقت تنها نیستی
           </p>
         </div>
