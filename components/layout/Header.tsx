@@ -193,7 +193,6 @@ function MobileHeaderBar({
 export function Header() {
   const pathname = usePathname();
   const [menuOpen, setMenuOpen] = useState(false);
-  const isHome = pathname === "/";
 
   useEffect(() => {
     setMenuOpen(false);
@@ -207,13 +206,7 @@ export function Header() {
   }, [menuOpen]);
 
   return (
-    <header
-      className={
-        isHome
-          ? "sticky top-0 z-50 border-b border-border/60 bg-white md:border-b-0 md:bg-background md:px-3 md:pt-3 sm:px-6 sm:pt-4 lg:px-8 lg:pt-5"
-          : "sticky top-0 z-50 border-b border-border/60 bg-white md:bg-white/90 md:backdrop-blur-md"
-      }
-    >
+    <header className="sticky top-0 z-50 border-b border-border/60 bg-white md:border-b-0 md:bg-background md:px-3 md:pt-3 sm:px-6 sm:pt-4 lg:px-8 lg:pt-5">
       <MobileHeaderBar
         menuOpen={menuOpen}
         onToggleMenu={() => setMenuOpen((open) => !open)}
@@ -221,35 +214,20 @@ export function Header() {
 
       <MobileNavMenu pathname={pathname} menuOpen={menuOpen} />
 
-      {isHome ? (
-        <div className="mx-auto hidden w-full max-w-6xl rounded-full bg-white shadow-lg shadow-navy/10 ring-1 ring-black/[0.04] md:block">
-          <div className="flex h-14 min-w-0 items-center justify-between gap-2 px-3 md:gap-2.5 md:px-4 lg:h-[72px] lg:gap-4 lg:px-6 xl:gap-6 xl:px-10">
-            <Link href="/" className="flex shrink-0 items-center gap-2" aria-label="باورلند">
-              <img src="/images/01 1.svg" alt="باورلند" className="" />
-            </Link>
-
-            <NavLinks
-              pathname={pathname}
-              className="flex min-w-0 flex-1 items-center justify-center gap-0 lg:gap-1 xl:gap-2"
-            />
-
-            <HeaderActions phoneClassName="!border-brand-blue hover:bg-sky-soft" />
-          </div>
-        </div>
-      ) : (
-        <div className="mx-auto hidden h-14 w-full max-w-7xl min-w-0 items-center justify-between gap-2 px-3 md:flex md:gap-2.5 md:px-4 lg:h-[72px] lg:gap-4 lg:px-6 xl:gap-4 xl:px-8">
+      <div className="mx-auto hidden w-full max-w-6xl rounded-full bg-white shadow-lg shadow-navy/10 ring-1 ring-black/[0.04] md:block">
+        <div className="flex h-14 min-w-0 items-center justify-between gap-2 px-3 md:gap-2.5 md:px-4 lg:h-[72px] lg:gap-4 lg:px-6 xl:gap-6 xl:px-10">
           <Link href="/" className="flex shrink-0 items-center gap-2" aria-label="باورلند">
-            <MediaSlot label="logo" className="h-7 w-24 md:h-8 md:w-28 lg:h-9" />
+            <img src="/images/01 1.svg" alt="باورلند" className="" />
           </Link>
 
           <NavLinks
             pathname={pathname}
-            className="flex min-w-0 flex-1 items-center justify-center gap-0 lg:gap-0.5 xl:gap-1"
+            className="flex min-w-0 flex-1 items-center justify-center gap-0 lg:gap-1 xl:gap-2"
           />
 
-          <HeaderActions />
+          <HeaderActions phoneClassName="!border-brand-blue hover:bg-sky-soft" />
         </div>
-      )}
+      </div>
     </header>
   );
 }
