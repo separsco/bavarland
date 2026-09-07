@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DashboardSectionPage } from "@/components/dashboard/DashboardSectionPage";
+import { MajorPageContent } from "@/components/dashboard/MajorPageContent";
 
 export const metadata: Metadata = {
   title: "انتخاب رشته | داشبورد باورلند",
@@ -7,11 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function DashboardMajorPage() {
-  return (
-    <DashboardSectionPage
-      title="انتخاب رشته"
-      description="انتخاب رشته را بر اساس رتبه، علاقه و اولویت‌هایت انجام بده."
-      icon="dashboard-nav-major"
-    />
-  );
+  return <MajorPageContent />;
 }
