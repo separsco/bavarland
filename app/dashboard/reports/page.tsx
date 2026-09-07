@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DashboardSectionPage } from "@/components/dashboard/DashboardSectionPage";
+import { ReportsPageContent } from "@/components/dashboard/ReportsPageContent";
 
 export const metadata: Metadata = {
   title: "گزارش عملکرد | داشبورد باورلند",
@@ -7,11 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function DashboardReportsPage() {
-  return (
-    <DashboardSectionPage
-      title="گزارش عملکرد"
-      description="گزارش پیشرفت، آزمون‌ها و عملکرد مطالعاتی."
-      icon="dashboard-nav-reports"
-    />
-  );
+  return <ReportsPageContent />;
 }
