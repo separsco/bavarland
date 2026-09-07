@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DashboardSectionPage } from "@/components/dashboard/DashboardSectionPage";
+import { PensionPageContent } from "@/components/dashboard/PensionPageContent";
 
 export const metadata: Metadata = {
   title: "پانسیون | داشبورد باورلند",
@@ -7,11 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function DashboardPensionPage() {
-  return (
-    <DashboardSectionPage
-      title="پانسیون"
-      description="ورود به اتاق مطالعه آنلاین و مشاهده وضعیت پانسیون."
-      icon="dashboard-nav-pension"
-    />
-  );
+  return <PensionPageContent />;
 }
