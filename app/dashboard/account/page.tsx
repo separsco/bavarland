@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DashboardSectionPage } from "@/components/dashboard/DashboardSectionPage";
+import { AccountPageContent } from "@/components/dashboard/AccountPageContent";
 
 export const metadata: Metadata = {
   title: "حساب کاربری | داشبورد باورلند",
@@ -7,11 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function DashboardAccountPage() {
-  return (
-    <DashboardSectionPage
-      title="حساب کاربری"
-      description="اطلاعات حساب کاربری و تنظیمات پروفایل."
-      icon="dashboard-nav-account"
-    />
-  );
+  return <AccountPageContent />;
 }
