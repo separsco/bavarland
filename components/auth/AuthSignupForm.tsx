@@ -3,7 +3,11 @@
 import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { AuthFormShell } from "@/components/auth/AuthFormShell";
-import { isMobileNumberValid, normalizeMobileNumber } from "@/data/auth";
+import {
+  isMobileNumberValid,
+  MOBILE_NUMBER_MAX_LENGTH,
+  normalizeMobileNumber,
+} from "@/data/auth";
 import { gradeLevels, isSignupFormValid, studyFields } from "@/data/signup";
 
 function PhoneField({
@@ -26,10 +30,7 @@ function PhoneField({
       <label htmlFor={id} className="mb-2 block text-sm font-medium text-foreground">
         {label}
       </label>
-      <div className="flex overflow-hidden rounded-2xl border border-border bg-sky-soft/60">
-        <span className="flex h-12 items-center border-e border-border px-4 text-sm text-muted">
-          +۹۸
-        </span>
+      <div className="flex overflow-hidden rounded-xl border border-border bg-sky-soft/60">
         <input
           id={id}
           name={id}
@@ -38,11 +39,22 @@ function PhoneField({
           autoComplete="tel"
           placeholder={placeholder}
           value={value}
-          onChange={(event) => onChange(event.target.value)}
+          maxLength={MOBILE_NUMBER_MAX_LENGTH}
+          onChange={(event) => {
+            onChange(
+              normalizeMobileNumber(event.target.value).slice(
+                0,
+                MOBILE_NUMBER_MAX_LENGTH,
+              ),
+            );
+          }}
           onBlur={onBlur}
           dir="ltr"
-          className="h-12 w-full bg-transparent px-4 text-left text-sm text-foreground outline-none placeholder:text-muted/70"
+          className="h-12 w-full bg-white px-4 text-left text-sm text-foreground outline-none placeholder:text-muted/70"
         />
+        <span className="flex h-12 items-center border-e border-border bg-[#F7F7F8] px-4 text-sm text-muted">
+          ۹۸+
+        </span>
       </div>
     </div>
   );
@@ -73,7 +85,7 @@ function SelectField({
         name={id}
         value={value}
         onChange={(event) => onChange(event.target.value)}
-        className="h-12 w-full appearance-none rounded-2xl border border-border bg-sky-soft/60 bg-[length:0.75rem] bg-[position:left_1rem_center] bg-no-repeat px-4 text-sm text-foreground outline-none [background-image:url('data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2712%27%20height=%278%27%20fill=%27none%27%20viewBox=%270%200%2012%208%27%3E%3Cpath%20stroke=%27%236b7280%27%20stroke-linecap=%27round%27%20stroke-linejoin=%27round%27%20stroke-width=%271.5%27%20d=%27m1%201.5%205%205%205-5%27/%3E%3C/svg%3E')] ps-4 pe-10"
+        className="h-12 w-full appearance-none rounded-xl border border-border bg-white bg-[position:left_1rem_center] bg-no-repeat px-4 text-sm text-foreground outline-none [background-image:url('data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20width=%2712%27%20height=%278%27%20fill=%27none%27%20viewBox=%270%200%2012%208%27%3E%3Cpath%20stroke=%27%236b7280%27%20stroke-linecap=%27round%27%20stroke-linejoin=%27round%27%20stroke-width=%271.5%27%20d=%27m1%201.5%205%205%205-5%27/%3E%3C/svg%3E')] ps-4 pe-10"
       >
         <option value="">{placeholder}</option>
         {options.map((option) => (
@@ -144,11 +156,11 @@ export function AuthSignupForm() {
             placeholder="مثال : علی محمدی"
             value={fullName}
             onChange={(event) => setFullName(event.target.value)}
-            className="h-12 w-full rounded-2xl border border-border bg-sky-soft/60 px-4 text-sm text-foreground outline-none placeholder:text-muted/70"
+            className="h-12 w-full rounded-xl border border-border bg-white px-4 text-sm text-foreground outline-none placeholder:text-muted/70"
           />
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2 bg-white">
           <SelectField
             id="studyField"
             label="رشته تحصیلی"

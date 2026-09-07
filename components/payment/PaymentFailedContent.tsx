@@ -37,7 +37,7 @@ export function PaymentFailedContent({
           href="/subscriptions"
           variant="outline"
           size="lg"
-          className="w-full border-navy/20 text-navy sm:flex-1"
+          className="w-full !border-brand-blue !text-brand-blue hover:!bg-sky-soft sm:flex-1"
         >
           برگشت به صفحه
         </Button>

@@ -2,7 +2,7 @@ import { SubscriptionHeader } from "@/components/subscriptions/SubscriptionHeade
 
 export function SubscriptionsPageContent() {
   return (
-    <div className="bg-sky-soft">
+    <div className="">
       <SubscriptionHeader />
     </div>
   );

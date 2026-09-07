@@ -21,7 +21,7 @@ export default async function PaymentSuccessPage({
   const trackingCode = tracking ?? "۶۲۵۵۳۰۰۳۸۲";
 
   return (
-    <PaymentResultShell>
+    <PaymentResultShell variant="success">
       <PaymentSuccessContent trackingCode={trackingCode} planId={plan} />
     </PaymentResultShell>
   );

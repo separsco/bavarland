@@ -222,7 +222,7 @@ export function ServicesSection() {
   const active = services.find((service) => service.id === activeId) ?? services[0];
 
   return (
-    <section className="py-12 sm:py-16 ">
+    <section id="services" className="py-12 sm:py-16 ">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-8 flex max-w-3xl flex-col items-center gap-3 text-center sm:mb-10 sm:gap-4">
           <Badge className="!bg-[#E8EDF3] !text-brand-blue px-11 py-2 text-sm">خدمات ما</Badge>

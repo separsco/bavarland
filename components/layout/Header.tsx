@@ -1,14 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { Button } from "@/components/ui/Button";
-import { MediaSlot } from "@/components/ui/MediaSlot";
 
 const navItems = [
   { href: "/", label: "خانه" },
+  { href: "/subscriptions", label: "اشتراک ها" },
+  { href: "/about", label: "درباره ما" },
+  { href: "/contact", label: "تماس با ما" },
+  { href: "/blog", label: "وبلاگ" },
+] as const;
+
+const mobileNavItems = [
+  { href: "/", label: "خانه" },
+  { href: "/auth", label: "داشبورد" },
+  { href: "/#services", label: "خدمات" },
   { href: "/subscriptions", label: "اشتراک ها" },
   { href: "/about", label: "درباره ما" },
   { href: "/contact", label: "تماس با ما" },
@@ -117,46 +126,25 @@ function UserIcon({ className }: { className?: string }) {
   );
 }
 
-function MobileNavMenu({
-  pathname,
-  menuOpen,
-}: {
-  pathname: string;
-  menuOpen: boolean;
-}) {
+function MobileNavMenu({ menuOpen }: { menuOpen: boolean }) {
   if (!menuOpen) return null;
 
   return (
-    <div className="border-t border-border bg-white px-4 py-4 md:hidden">
-      <nav className="flex flex-col gap-1" aria-label="منوی موبایل">
-        {navItems.map((item) => {
-          const isActive =
-            item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
-
-          return (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`rounded-2xl px-4 py-3 text-sm ${isActive
-                ? "bg-sky font-semibold text-primary"
-                : "font-medium text-foreground"
-                }`}
-            >
-              {item.label}
-            </Link>
-          );
-        })}
-      </nav>
-
-      <div className="mt-4 flex flex-col gap-2">
-        <Button href="/auth" variant="navy" size="lg" className="w-full">
-          ورود / ثبت نام
-        </Button>
-        <Button href="/contact" variant="outline" size="lg" className="w-full">
-          تماس با ما
-        </Button>
-      </div>
-    </div>
+    <nav className="flex flex-col pb-1" aria-label="منوی موبایل">
+      {mobileNavItems.map((item) => (
+        <Link
+          key={`${item.href}-${item.label}`}
+          href={item.href}
+          className="flex items-center justify-between border-t border-border px-4 py-4 text-sm font-medium text-foreground"
+        >
+          <span>{item.label}</span>
+          {/* <ChevronLeft className="size-4 text-[#C0C0C4]" /> */}
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+<path d="M12.5004 17.2253C12.3421 17.2253 12.1837 17.1669 12.0587 17.0419L6.62539 11.6086C5.74206 10.7253 5.74206 9.27526 6.62539 8.39193L12.0587 2.95859C12.3004 2.71693 12.7004 2.71693 12.9421 2.95859C13.1837 3.20026 13.1837 3.60026 12.9421 3.84193L7.50872 9.27526C7.10872 9.67526 7.10872 10.3253 7.50872 10.7253L12.9421 16.1586C13.1837 16.4003 13.1837 16.8003 12.9421 17.0419C12.8171 17.1586 12.6587 17.2253 12.5004 17.2253Z" fill="#54555D"/>
+</svg>
+        </Link>
+      ))}
+    </nav>
   );
 }
 
@@ -168,7 +156,7 @@ function MobileHeaderBar({
   onToggleMenu: () => void;
 }) {
   return (
-    <div className="relative mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-3 px-4 md:hidden">
+    <div className="relative mx-auto flex h-16 w-full flex items-center justify-between gap-3 px-4 md:hidden">
       <button
         type="button"
         aria-label={menuOpen ? "بستن منو" : "باز کردن منو"}
@@ -177,14 +165,33 @@ function MobileHeaderBar({
         className="inline-flex size-10 items-center justify-center rounded-full text-foreground"
       >
         {menuOpen ? (
-          <X className="size-6" strokeWidth={2} />
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <g clip-path="url(#clip0_4693_17779)">
+          <path d="M20.0007 37.9163C10.1173 37.9163 2.08398 29.883 2.08398 19.9997C2.08398 10.1163 10.1173 2.08301 20.0007 2.08301C29.884 2.08301 37.9173 10.1163 37.9173 19.9997C37.9173 29.883 29.884 37.9163 20.0007 37.9163ZM20.0007 4.58301C11.5007 4.58301 4.58398 11.4997 4.58398 19.9997C4.58398 28.4997 11.5007 35.4163 20.0007 35.4163C28.5007 35.4163 35.4173 28.4997 35.4173 19.9997C35.4173 11.4997 28.5007 4.58301 20.0007 4.58301Z" fill="#2E2F39"/>
+          <path d="M15.2829 25.9663C14.9663 25.9663 14.6496 25.8496 14.3996 25.5996C13.9163 25.1163 13.9163 24.3163 14.3996 23.8329L23.8329 14.3996C24.3163 13.9163 25.1163 13.9163 25.5996 14.3996C26.0829 14.8829 26.0829 15.6829 25.5996 16.1663L16.1663 25.5996C15.9329 25.8496 15.5996 25.9663 15.2829 25.9663Z" fill="#2E2F39"/>
+          <path d="M24.7163 25.9663C24.3996 25.9663 24.0829 25.8496 23.8329 25.5996L14.3996 16.1663C13.9163 15.6829 13.9163 14.8829 14.3996 14.3996C14.8829 13.9163 15.6829 13.9163 16.1663 14.3996L25.5996 23.8329C26.0829 24.3163 26.0829 25.1163 25.5996 25.5996C25.3496 25.8496 25.0329 25.9663 24.7163 25.9663Z" fill="#2E2F39"/>
+          </g>
+          <defs>
+          <clipPath id="clip0_4693_17779">
+          <rect width="40" height="40" rx="4" fill="white"/>
+          </clipPath>
+          </defs>
+          </svg>
         ) : (
-          <Menu className="size-6" strokeWidth={2} />
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 40 40" fill="none">
+          <path d="M35 12.917H5C4.31667 12.917 3.75 12.3503 3.75 11.667C3.75 10.9837 4.31667 10.417 5 10.417H35C35.6833 10.417 36.25 10.9837 36.25 11.667C36.25 12.3503 35.6833 12.917 35 12.917Z" fill="#2E2F39"/>
+          <path d="M35 21.25H5C4.31667 21.25 3.75 20.6833 3.75 20C3.75 19.3167 4.31667 18.75 5 18.75H35C35.6833 18.75 36.25 19.3167 36.25 20C36.25 20.6833 35.6833 21.25 35 21.25Z" fill="#2E2F39"/>
+          <path d="M35 29.583H5C4.31667 29.583 3.75 29.0163 3.75 28.333C3.75 27.6497 4.31667 27.083 5 27.083H35C35.6833 27.083 36.25 27.6497 36.25 28.333C36.25 29.0163 35.6833 29.583 35 29.583Z" fill="#2E2F39"/>
+          </svg>
         )}
       </button>
 
-      <Link href="/" className="absolute start-1/2 -translate-x-1/2" aria-label="باورلند">
-        <MediaSlot label="logo" className="h-8 w-28" />
+      <Link
+        href="/"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+        aria-label="باورلند"
+      >
+        <img src="/images/menumobileicon.svg" alt="باورلند" className="" />
       </Link>
 
       <Link
@@ -214,13 +221,33 @@ export function Header() {
   }, [menuOpen]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/60 bg-white md:border-b-0 md:bg-background md:px-3 md:pt-3 sm:px-6 sm:pt-4 lg:px-8 lg:pt-5">
-      <MobileHeaderBar
-        menuOpen={menuOpen}
-        onToggleMenu={() => setMenuOpen((open) => !open)}
-      />
+    <header className="sticky top-0 z-50 w-full bg-transparent md:px-3 md:pt-3 lg:px-8 lg:pt-5">
+      <div className="w-full md:hidden">
+        {menuOpen ? <div className="h-16" aria-hidden /> : null}
 
-      <MobileNavMenu pathname={pathname} menuOpen={menuOpen} />
+        {menuOpen ? (
+          <button
+            type="button"
+            aria-label="بستن منو"
+            className="fixed inset-0 z-40 bg-transparent"
+            onClick={() => setMenuOpen(false)}
+          />
+        ) : null}
+
+        <div
+          className={
+            menuOpen
+              ? "fixed inset-x-0 top-0 z-50 overflow-hidden bg-white "
+              : "relative z-50 border-b border-border/60 bg-white"
+          }
+        >
+          <MobileHeaderBar
+            menuOpen={menuOpen}
+            onToggleMenu={() => setMenuOpen((open) => !open)}
+          />
+          <MobileNavMenu menuOpen={menuOpen} />
+        </div>
+      </div>
 
       <div className="mx-auto hidden w-full max-w-6xl rounded-full bg-white shadow-lg shadow-navy/10 ring-1 ring-black/[0.04] md:block">
         <div className="flex h-14 min-w-0 items-center justify-between gap-2 px-3 md:gap-2.5 md:px-4 lg:h-[72px] lg:gap-4 lg:px-6 xl:gap-6 xl:px-10">

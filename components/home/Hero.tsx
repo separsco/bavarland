@@ -20,7 +20,7 @@ export function Hero() {
               <span className="block">
                 هر دانش‌آموز، یک{" "}
                 <span className="relative inline-block">
-                  <svg className="lg:block hidden" xmlns="http://www.w3.org/2000/svg" width="71" height="36" viewBox="0 0 71 36" fill="none">
+                  <svg className="lg:block  hidden absolute right-12 -top-6" xmlns="http://www.w3.org/2000/svg" width="71" height="36" viewBox="0 0 71 36" fill="none">
                     <path d="M19.922 35.1315L0.25 23.7129" stroke="#FF5527" strokeMiterlimit="10" />
                     <path d="M42.8812 35.129L33.0193 0.135246" stroke="#FF5527" strokeMiterlimit="10" />
                     <path d="M58.7924 35.1326L67.7503 18.6771" stroke="#FF5527" strokeMiterlimit="10" />
@@ -43,12 +43,12 @@ export function Hero() {
 
           <HeroIllustration className="lg:hidden" />
 
-          <div className="grid w-full max-w-md grid-cols-1 gap-3 sm:max-w-xl sm:grid-cols-2">
+          <div className="mx-auto flex w-full max-w-xl flex-col items-center gap-3 sm:grid sm:grid-cols-2">
             <Button
               href="/subscriptions"
               variant="primary"
               size="lg"
-              className="h-7 w-[90%] justify-center px-4 text-sm sm:text-base"
+              className="mx-auto h-7 w-[70%] lg:w-[90%] justify-center px-4 text-sm sm:w-full sm:text-base"
               endSlot={<IoChevronBackOutline className="size-4 shrink-0" />}
             >
               شروع مسیر موفقیت
@@ -57,7 +57,7 @@ export function Hero() {
               href="/contact"
               variant="outline"
               size="lg"
-              className="h-7 w-[90%] justify-center border-brand-blue !bg-background px-4 text-sm !text-brand-blue hover:!bg-background sm:text-base"
+              className="mx-auto h-7 w-[70%] lg:w-[90%] justify-center border-brand-blue !bg-background px-4 text-sm !text-brand-blue hover:!bg-sky-soft sm:w-full sm:text-base"
             >
               تماس با ما
             </Button>
