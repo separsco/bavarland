@@ -17,10 +17,10 @@ export function AuthSidebar() {
   }, []);
 
   return (
-    <aside className="relative z-10 hidden  min-h-[750px] w-[50%] shrink-0 overflow-visible  lg:flex lg:flex-col">
+    <aside className="relative z-10 hidden  min-h-[750px] w-[50%] shrink-0 overflow-visible  xl:flex xl:flex-col">
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src="/images/Union.svg"
+        src="/images/wave_shape_transparent.png"
         alt=""
         aria-hidden
         className="pointer-events-none absolute top-0 left-0 h-full w-auto max-w-none"
