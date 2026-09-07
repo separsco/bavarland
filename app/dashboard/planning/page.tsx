@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DashboardSectionPage } from "@/components/dashboard/DashboardSectionPage";
+import { PlanningPageContent } from "@/components/dashboard/PlanningPageContent";
 
 export const metadata: Metadata = {
   title: "برنامه‌ریزی | داشبورد باورلند",
@@ -7,11 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function DashboardPlanningPage() {
-  return (
-    <DashboardSectionPage
-      title="برنامه ریزی"
-      description="برنامه مطالعاتی روزانه و هفتگی خود را اینجا مدیریت کن."
-      icon="dashboard-nav-planning"
-    />
-  );
+  return <PlanningPageContent />;
 }
