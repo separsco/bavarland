@@ -51,17 +51,23 @@ export const dashboardNavItems = [
 
 export const dashboardUser = {
   firstName: "کیمیا",
-  greeting: "درود کیمیا 👋 به باورلند خوش اومدی",
+  title: " درود کیمیا 👋  ",
+  desc: "به باورلند خوش اومدی",
   points: "۳,۲۴۰",
   rank: "رتبه دوم",
-};
+} as const;
 
 export const currentSession = {
   title: "ریاضی — فصل مشتق",
-  timeRange: "۰۸:۰۰ - ۱۰:۰۰",
   status: "۱۰ دقیقه دیگر فعال می‌شود",
-  attendees: ["session-avatar-1", "session-avatar-2", "session-avatar-3", "session-avatar-4"],
-};
+  timeRange: "۰۸:۰۰ - ۱۰:۰۰",
+  extraAttendees: 16,
+  attendees: [
+    "session-attendee-1",
+    "session-attendee-2",
+    "session-attendee-3",
+  ],
+} as const;
 
 export type PlanTone = "green" | "orange" | "red" | "blue" | "muted";
 
@@ -70,6 +76,8 @@ export type WeeklyPlanItem = {
   subtitle: string;
   tone: PlanTone;
 };
+
+export type WeeklyPlanCell = WeeklyPlanItem | null;
 
 export const weekDays = [
   "شنبه",
@@ -81,39 +89,121 @@ export const weekDays = [
   "جمعه",
 ] as const;
 
-export const weeklyPlan: WeeklyPlanItem[][] = [
+export const weeklyTimeRange = {
+  start: "۰۷:۳۰",
+  end: "۰۹:۰۰",
+} as const;
+
+const chemistryTimed: WeeklyPlanItem = {
+  title: "شیمی۲(فصل ۱)",
+  subtitle: "تست زمان‌دار",
+  tone: "muted",
+};
+
+const chemistryStudy: WeeklyPlanItem = {
+  title: "شیمی۲(فصل ۱)",
+  subtitle: "مطالعه",
+  tone: "muted",
+};
+
+export const weeklyPlan: WeeklyPlanCell[][] = [
   [
-    { title: "شیمی ۱۲ (فصل ۱)", subtitle: "تست زمان‌دار", tone: "green" },
-    { title: "فیزیک ۱۲", subtitle: "درسنامه", tone: "blue" },
-    { title: "ادبیات", subtitle: "آرایه", tone: "muted" },
+    { ...chemistryTimed, tone: "red" },
+    chemistryStudy,
+    { ...chemistryTimed, tone: "green" },
+    chemistryStudy,
+    chemistryStudy,
+    { ...chemistryTimed, tone: "orange" },
+    chemistryStudy,
   ],
   [
-    { title: "ریاضی ۲", subtitle: "فصل مشتق", tone: "orange" },
-    { title: "زیست ۱۲", subtitle: "تست", tone: "green" },
+    { ...chemistryTimed, tone: "green" },
+    { title: "ریاضی ۲", subtitle: "مطالعه", tone: "blue" },
+    chemistryStudy,
+    { ...chemistryTimed, tone: "orange" },
+    { ...chemistryTimed, tone: "green" },
+    chemistryStudy,
+    { ...chemistryTimed, tone: "orange" },
   ],
   [
-    { title: "شیمی ۱۲", subtitle: "آزمونک", tone: "red" },
-    { title: "زبان", subtitle: "لغت و گرامر", tone: "blue" },
-    { title: "هندسه", subtitle: "تمرین", tone: "muted" },
+    chemistryStudy,
+    { ...chemistryTimed, tone: "green" },
+    { title: "زیست ۱۲", subtitle: "تست زمان‌دار", tone: "muted" },
+    chemistryStudy,
+    { title: "فیزیک ۱۲", subtitle: "آزمون", tone: "muted" },
+    { ...chemistryTimed, tone: "green" },
+    chemistryStudy,
   ],
   [
-    { title: "زیست ۱۲ (فصل ۲)", subtitle: "درسنامه", tone: "green" },
-    { title: "ریاضی ۲", subtitle: "تست زمان‌دار", tone: "orange" },
+    { ...chemistryTimed, tone: "orange" },
+    chemistryStudy,
+    { ...chemistryTimed, tone: "green" },
+    { title: "ادبیات", subtitle: "مطالعه", tone: "muted" },
+    chemistryStudy,
+    { ...chemistryTimed, tone: "red" },
+    { ...chemistryTimed, tone: "green" },
   ],
   [
-    { title: "فیزیک ۱۲", subtitle: "حل تمرین", tone: "blue" },
-    { title: "شیمی ۱۲", subtitle: "جمع‌بندی", tone: "green" },
-    { title: "دینی", subtitle: "درس ۳", tone: "muted" },
+    chemistryStudy,
+    null,
+    { ...chemistryTimed, tone: "orange" },
+    { ...chemistryTimed, tone: "green" },
+    chemistryStudy,
+    chemistryStudy,
+    { title: "دینی", subtitle: "مطالعه", tone: "muted" },
   ],
   [
-    { title: "ریاضی ۲", subtitle: "مرور", tone: "orange" },
-    { title: "ادبیات", subtitle: "قرابت", tone: "red" },
+    { title: "فیزیک ۱۲", subtitle: "تست زمان‌دار", tone: "muted" },
+    { ...chemistryTimed, tone: "green" },
+    chemistryStudy,
+    { ...chemistryTimed, tone: "orange" },
+    { ...chemistryTimed, tone: "green" },
+    chemistryStudy,
+    { ...chemistryTimed, tone: "orange" },
   ],
   [
-    { title: "آزمون جامع", subtitle: "صبح", tone: "blue" },
-    { title: "تحلیل آزمون", subtitle: "عصر", tone: "muted" },
+    { ...chemistryTimed, tone: "green" },
+    chemistryStudy,
+    { ...chemistryTimed, tone: "red" },
+    chemistryStudy,
+    { title: "زبان", subtitle: "مطالعه", tone: "muted" },
+    { ...chemistryTimed, tone: "green" },
+    chemistryStudy,
+  ],
+  [
+    chemistryStudy,
+    { ...chemistryTimed, tone: "orange" },
+    chemistryStudy,
+    { ...chemistryTimed, tone: "green" },
+    { ...chemistryTimed, tone: "orange" },
+    chemistryStudy,
+    { ...chemistryTimed, tone: "green" },
+  ],
+  [
+    { ...chemistryTimed, tone: "orange" },
+    chemistryStudy,
+    { ...chemistryTimed, tone: "green" },
+    chemistryStudy,
+    chemistryStudy,
+    { title: "آزمون جامع", subtitle: "آزمون", tone: "muted" },
+    { ...chemistryTimed, tone: "red" },
+  ],
+  [
+    chemistryStudy,
+    { ...chemistryTimed, tone: "green" },
+    chemistryStudy,
+    { ...chemistryTimed, tone: "orange" },
+    { ...chemistryTimed, tone: "green" },
+    chemistryStudy,
+    { title: "تحلیل آزمون", subtitle: "مطالعه", tone: "muted" },
   ],
 ];
+
+export const streakInfo = {
+  count: 3,
+  subtitle: "(روزهای متوالی که اینجا بودی)",
+  message: "تبریک میگم سه روز که پشت سر هم داری تلاش میکنی!",
+} as const;
 
 export const streakDays = [
   { label: "ش", done: true, current: false },
@@ -133,27 +223,24 @@ export const counselorAlert = {
 
 export const todayPlan = [
   {
-    id: "math",
-    title: "ریاضی ۲ - فصل دوازدهم",
+    id: "math-1",
+    title: "ریاضی ۲",
+    subtitle: "فصل دوازدهم (مبحث تابع)",
     time: "۰۸:۰۰ - ۱۰:۰۰",
     done: false,
   },
   {
-    id: "chemistry",
-    title: "شیمی ۱۲ - فصل اول",
-    time: "۱۰:۳۰ - ۱۲:۰۰",
-    done: true,
-  },
-  {
-    id: "biology",
-    title: "زیست ۱۲ - فصل دوم",
-    time: "۱۴:۰۰ - ۱۶:۰۰",
+    id: "math-2",
+    title: "ریاضی ۲",
+    subtitle: "فصل دوازدهم (مبحث تابع)",
+    time: "۰۸:۰۰ - ۱۰:۰۰",
     done: false,
   },
   {
-    id: "physics",
-    title: "فیزیک ۱۲ - نوسان",
-    time: "۱۶:۳۰ - ۱۸:۰۰",
+    id: "math-3",
+    title: "ریاضی ۲",
+    subtitle: "فصل دوازدهم (مبحث تابع)",
+    time: "۰۸:۰۰ - ۱۰:۰۰",
     done: false,
   },
 ] as const;
@@ -161,12 +248,14 @@ export const todayPlan = [
 export const recommendedVideos = [
   {
     id: "video-1",
-    title: "جمع‌بندی فصل مشتق ریاضی",
+    title: "اهمال کاری چیه و چطور درمانش کنیم؟",
+    duration: "۰۱:۴۵:۲۳",
     slot: "academy-video-1",
   },
   {
     id: "video-2",
-    title: "تست‌های پرتکرار شیمی دوازدهم",
+    title: "اهمال کاری چیه و چطور درمانش کنیم؟",
+    duration: "۰۱:۴۵:۲۳",
     slot: "academy-video-2",
   },
 ] as const;
