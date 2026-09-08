@@ -1,8 +1,9 @@
 import { DashboardAcademyVideos } from "@/components/dashboard/DashboardAcademyVideos";
-import { DashboardMobilePlan } from "@/components/dashboard/DashboardMobilePlan";
+import { DashboardCounselorAlert } from "@/components/dashboard/DashboardCounselorAlert";
 import { DashboardSessionBanner } from "@/components/dashboard/DashboardSessionBanner";
 import { DashboardSidePanels } from "@/components/dashboard/DashboardSidePanels";
 import { DashboardStreakCard } from "@/components/dashboard/DashboardStreakCard";
+import { DashboardTodaySessions } from "@/components/dashboard/DashboardTodaySessions";
 import { DashboardWeeklyPlan } from "@/components/dashboard/DashboardWeeklyPlan";
 
 export function DashboardPageContent() {
@@ -11,8 +12,9 @@ export function DashboardPageContent() {
       <div className="space-y-4 lg:hidden">
         <DashboardSessionBanner />
         <DashboardStreakCard />
-        <DashboardMobilePlan />
         <DashboardAcademyVideos />
+        <DashboardCounselorAlert />
+        <DashboardTodaySessions />
       </div>
 
       <div className="hidden gap-4 lg:grid lg:grid-cols-[minmax(0,1fr)_21.5rem] lg:items-start xl:grid-cols-[minmax(0,1fr)_24rem]">

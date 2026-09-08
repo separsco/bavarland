@@ -221,6 +221,38 @@ export const counselorAlert = {
   time: "۱۵:۳۰",
 };
 
+export const todaySessions = [
+  {
+    id: "enter",
+    title: "ریاضی ۲",
+    subtitle: "فصل دوازدهم (مبحث تابع)",
+    time: "۰۸:۰۰ - ۱۰:۰۰",
+    status: "enter",
+  },
+  {
+    id: "remaining",
+    title: "ریاضی ۲",
+    subtitle: "فصل دوازدهم (مبحث تابع)",
+    time: "۰۸:۰۰ - ۱۰:۰۰",
+    status: "remaining",
+    remainingLabel: "۷ دقیقه مونده",
+  },
+  {
+    id: "pending",
+    title: "ریاضی ۲",
+    subtitle: "فصل دوازدهم (مبحث تابع)",
+    time: "۰۸:۰۰ - ۱۰:۰۰",
+    status: "pending",
+  },
+  {
+    id: "done",
+    title: "ریاضی ۲",
+    subtitle: "فصل دوازدهم (مبحث تابع)",
+    time: "۰۸:۰۰ - ۱۰:۰۰",
+    status: "done",
+  },
+] as const;
+
 export const todayPlan = [
   {
     id: "math-1",
