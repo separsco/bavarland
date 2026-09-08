@@ -1,14 +1,67 @@
-import { Check, Flame, Hourglass } from "lucide-react";
 import { streakDays, streakInfo } from "@/data/dashboard";
+
+function FireIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M12.8324 21.8013C15.9583 21.1747 20 18.926 20 13.1112C20 7.8196 16.1267 4.29593 13.3415 2.67685C12.7235 2.31757 12 2.79006 12 3.50492V5.3334C12 6.77526 11.3938 9.40711 9.70932 10.5018C8.84932 11.0607 7.92052 10.2242 7.816 9.20388L7.73017 8.36604C7.6304 7.39203 6.63841 6.80075 5.85996 7.3946C4.46147 8.46144 3 10.3296 3 13.1112C3 20.2223 8.28889 22.0001 10.9333 22.0001C11.0871 22.0001 11.2488 21.9955 11.4171 21.9858C10.1113 21.8742 8 21.064 8 18.4442C8 16.3949 9.49507 15.0085 10.631 14.3346C10.9365 14.1533 11.2941 14.3887 11.2941 14.7439V15.3331C11.2941 15.784 11.4685 16.4889 11.8836 16.9714C12.3534 17.5174 13.0429 16.9454 13.0985 16.2273C13.1161 16.0008 13.3439 15.8564 13.5401 15.9711C14.1814 16.3459 15 17.1465 15 18.4442C15 20.4922 13.871 21.4343 12.8324 21.8013Z" fill="#FF5527" />
+    </svg>
+  );
+}
+
+function TodayIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M17.39 15.67L13.35 12H10.64L6.59998 15.67C5.46998 16.69 5.09998 18.26 5.64998 19.68C6.19998 21.09 7.53998 22 9.04998 22H14.94C16.46 22 17.79 21.09 18.34 19.68C18.89 18.26 18.52 16.69 17.39 15.67ZM13.82 18.14H10.18C9.79998 18.14 9.49998 17.83 9.49998 17.46C9.49998 17.09 9.80998 16.78 10.18 16.78H13.82C14.2 16.78 14.5 17.09 14.5 17.46C14.5 17.83 14.19 18.14 13.82 18.14Z" fill="#FF5527" />
+      <path d="M18.3502 4.32C17.8002 2.91 16.4602 2 14.9502 2H9.05016C7.54016 2 6.20016 2.91 5.65016 4.32C5.11016 5.74 5.48016 7.31 6.61016 8.33L10.6502 12H13.3602L17.4002 8.33C18.5202 7.31 18.8902 5.74 18.3502 4.32ZM13.8202 7.23H10.1802C9.80016 7.23 9.50016 6.92 9.50016 6.55C9.50016 6.18 9.81016 5.87 10.1802 5.87H13.8202C14.2002 5.87 14.5002 6.18 14.5002 6.55C14.5002 6.92 14.1902 7.23 13.8202 7.23Z" fill="#FF5527" />
+    </svg>
+  );
+}
+
+function DoneIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M10 0C4.49 0 0 4.49 0 10C0 15.51 4.49 20 10 20C15.51 20 20 15.51 20 10C20 4.49 15.51 0 10 0ZM14.78 7.7L9.11 13.37C8.97 13.51 8.78 13.59 8.58 13.59C8.38 13.59 8.19 13.51 8.05 13.37L5.22 10.54C4.93 10.25 4.93 9.77 5.22 9.48C5.51 9.19 5.99 9.19 6.28 9.48L8.58 11.78L13.72 6.64C14.01 6.35 14.49 6.35 14.78 6.64C15.07 6.93 15.07 7.4 14.78 7.7Z" fill="#145197" />
+    </svg>
+  );
+}
+
+function UpcomingIcon() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M9.9898 22.5496C9.9398 22.5496 9.8898 22.5496 9.8398 22.5296C6.0098 21.7496 2.8998 18.9296 1.7398 15.1896C1.6198 14.7896 1.8398 14.3696 2.2298 14.2496C2.6298 14.1296 3.0498 14.3496 3.1698 14.7396C4.1698 17.9596 6.8398 20.3796 10.1398 21.0496C10.5498 21.1296 10.8098 21.5296 10.7198 21.9396C10.6498 22.2996 10.3298 22.5496 9.9898 22.5496Z" fill="#85858B" />
+      <path d="M21.9502 11.73C21.5702 11.73 21.2402 11.44 21.2002 11.06C20.7202 6.32 16.7602 2.75 12.0002 2.75C7.23022 2.75 3.28022 6.32 2.80022 11.05C2.76022 11.46 2.40022 11.77 1.98022 11.72C1.57022 11.68 1.27022 11.31 1.31022 10.9C1.87022 5.4 6.47022 1.25 12.0002 1.25C17.5402 1.25 22.1402 5.4 22.6902 10.9C22.7302 11.31 22.4302 11.68 22.0202 11.72C22.0002 11.73 21.9702 11.73 21.9502 11.73Z" fill="#85858B" />
+      <path d="M14.0101 22.5498C13.6601 22.5498 13.3501 22.3098 13.2801 21.9498C13.2001 21.5398 13.4601 21.1498 13.8601 21.0698C17.1401 20.3998 19.8101 17.9998 20.8201 14.7998C20.9401 14.3998 21.3701 14.1798 21.7601 14.3098 22.1601 14.4298 22.3701 14.8598 22.2501 15.2498C21.0701 18.9698 17.9701 21.7598 14.1601 22.5398C14.1101 22.5398 14.0601 22.5498 14.0101 22.5498Z" fill="#85858B" />
+    </svg>
+  );
+}
+
+function TodayPointer() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      className="origin-center rotate-90"
+      width="11"
+      height="42"
+      viewBox="0 0 11 42"
+      fill="none"
+      aria-hidden
+    >
+      <path
+        d="M6.85254 29.1035C6.85239 25.3997 3.53148 23.0277 0.710938 21.6807C-0.236682 21.2277 -0.236725 19.2722 0.710938 18.8193C3.53152 17.4723 6.85248 15.1004 6.85254 11.3965L6.85254 29.1035ZM11.8711 42C9.10031 42 6.85449 39.9667 6.85449 37.459L6.85449 4.54102C6.85449 2.03334 9.10031 0 11.8711 0L11.8711 42Z"
+        fill="#FF5527"
+      />
+    </svg>
+  );
+}
 
 export function DashboardStreakCard() {
   return (
-    <section className="rounded-[1.75rem] bg-white p-4 shadow-sm shadow-navy/5 sm:p-5">
-      <div className="flex items-start gap-2">
-        <Flame className="mt-0.5 size-5 fill-[#e53935] text-[#e53935]" />
-        <div>
+    <section className="relative overflow-visible rounded-[1.75rem] bg-white p-4 shadow-sm shadow-navy/5">
+      <div className="flex items-start gap-2 border-b border-border pb-2">
+        <FireIcon />
+        <div className="flex items-center gap-2">
           <h2 className="text-base font-extrabold text-foreground">استریک</h2>
-          <p className="mt-0.5 text-xs text-muted">{streakInfo.subtitle}</p>
+          <p className="text-xs text-muted">{streakInfo.subtitle}</p>
         </div>
       </div>
 
@@ -16,33 +69,29 @@ export function DashboardStreakCard() {
         {streakInfo.message}
       </p>
 
-      <div className="mt-5 flex items-end justify-between gap-1">
+
+      <div className="mt-5 flex items-start justify-between gap-1">
         {streakDays.map((day) => (
-          <div key={day.label} className="flex flex-1 flex-col items-center gap-2">
-            {day.current ? (
-              <div className="flex h-10 flex-col items-center justify-center">
-                <Hourglass className="size-6 text-primary" />
-                <span
-                  className="mt-0.5 size-0 border-x-[5px] border-b-[6px] border-x-transparent border-b-primary"
-                  aria-hidden
-                />
-              </div>
-            ) : (
-              <span
-                className={`flex size-10 items-center justify-center rounded-full ${
-                  day.done
-                    ? "bg-brand-blue text-white"
-                    : "border border-dashed border-border bg-white text-muted"
-                }`}
-              >
-                {day.done ? <Check className="size-4" strokeWidth={3} /> : null}
-              </span>
-            )}
+          <div key={day.label} className="relative flex flex-1 flex-col items-center gap-2">
+            <span className="flex size-10 items-center justify-center">
+              {day.current ? (
+                <TodayIcon />
+              ) : day.done ? (
+                <DoneIcon />
+              ) : (
+                <UpcomingIcon />
+              )}
+            </span>
             <span
               className={`text-xs ${day.current ? "font-bold text-primary" : "text-muted"}`}
             >
               {day.current ? "امروز" : day.label}
             </span>
+            {day.current ? (
+              <span className="pointer-events-none absolute -bottom-3 left-1/2 z-10 flex h-3 w-11 -translate-x-1/2 translate-y-1/2 items-center justify-center">
+                <TodayPointer />
+              </span>
+            ) : null}
           </div>
         ))}
       </div>

@@ -206,13 +206,13 @@ export const streakInfo = {
 } as const;
 
 export const streakDays = [
-  { label: "ش", done: true, current: false },
-  { label: "ی", done: true, current: false },
-  { label: "د", done: true, current: false },
-  { label: "س", done: false, current: true },
-  { label: "چ", done: false, current: false },
-  { label: "پ", done: false, current: false },
-  { label: "ج", done: false, current: false },
+  { label: "شنبه", done: true, current: false },
+  { label: "یکشنبه", done: true, current: false },
+  { label: "دوشنبه", done: true, current: false },
+  { label: "سه شنبه", done: false, current: true },
+  { label: "چهارشنبه", done: false, current: false },
+  { label: "پنج شنبه", done: false, current: false },
+  { label: "جمعه", done: false, current: false },
 ] as const;
 
 export const counselorAlert = {
