@@ -1,11 +1,11 @@
 export const planningWeekDays = [
-  { id: "sat", label: "شنبه", date: "۱۲", active: false },
-  { id: "sun", label: "یکشنبه", date: "۱۳", active: false },
-  { id: "mon", label: "دوشنبه", date: "۱۴", active: false },
-  { id: "tue", label: "سه‌شنبه", date: "۱۵", active: true },
-  { id: "wed", label: "چهارشنبه", date: "۱۶", active: false },
-  { id: "thu", label: "پنجشنبه", date: "۱۷", active: false },
-  { id: "fri", label: "جمعه", date: "۱۸", active: false },
+  { id: "sat", label: "شنبه", date: "12", active: false },
+  { id: "sun", label: "یکشنبه", date: "13", active: false },
+  { id: "mon", label: "دوشنبه", date: "14", active: false },
+  { id: "tue", label: "سه‌شنبه", date: "15", active: true },
+  { id: "wed", label: "چهارشنبه", date: "16", active: false },
+  { id: "thu", label: "پنجشنبه", date: "17", active: false },
+  { id: "fri", label: "جمعه", date: "18", active: false },
 ] as const;
 
 export const planningSelectedDate = "سه‌شنبه ۱۵ مرداد";
