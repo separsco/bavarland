@@ -1,5 +1,4 @@
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
-import { PensionPointsBanner } from "@/components/dashboard/PensionPointsBanner";
 import { academyCategories } from "@/data/academy";
 
 function AcademyCategoryCard({
@@ -38,7 +37,6 @@ export function AcademyPageContent() {
       />
 
       <div className="space-y-4 lg:hidden">
-        <PensionPointsBanner />
         {mobileCategories.map((category) => (
           <AcademyCategoryCard key={category.id} category={category} />
         ))}

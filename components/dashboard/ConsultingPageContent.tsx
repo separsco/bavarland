@@ -1,6 +1,5 @@
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import { ConsultingRequestForm } from "@/components/dashboard/ConsultingRequestForm";
-import { PensionPointsBanner } from "@/components/dashboard/PensionPointsBanner";
 import { consultingProcess, consultingServices } from "@/data/consulting";
 import { toPersianDigits } from "@/data/otp";
 
@@ -14,10 +13,6 @@ export function ConsultingPageContent() {
           { label: "مشاوره" },
         ]}
       />
-
-      <div className="lg:hidden">
-        <PensionPointsBanner />
-      </div>
 
       <div className="grid gap-4 lg:grid-cols-2">
         <section className="rounded-[1.75rem] bg-white p-5 shadow-sm shadow-navy/5 sm:p-6">

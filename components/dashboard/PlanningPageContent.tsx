@@ -1,5 +1,4 @@
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
-import { PensionPointsBanner } from "@/components/dashboard/PensionPointsBanner";
 import { PensionTodayPlan } from "@/components/dashboard/PensionTodayPlan";
 import { PlanningMainPanel } from "@/components/dashboard/PlanningMainPanel";
 import { PlanningSideWidgets } from "@/components/dashboard/PlanningSideWidgets";
@@ -16,7 +15,6 @@ export function PlanningPageContent() {
       />
 
       <div className="space-y-4 lg:hidden">
-        <PensionPointsBanner />
         <PensionTodayPlan showTitle={false} />
         <PlanningSideWidgets />
       </div>

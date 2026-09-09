@@ -1,5 +1,4 @@
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
-import { PensionPointsBanner } from "@/components/dashboard/PensionPointsBanner";
 import { PensionRanking } from "@/components/dashboard/PensionRanking";
 import { PensionStatCards } from "@/components/dashboard/PensionStatCards";
 import { PensionTodayPlan } from "@/components/dashboard/PensionTodayPlan";
@@ -15,10 +14,6 @@ export function PensionPageContent() {
           { label: "پانسیون" },
         ]}
       />
-
-      <div className="lg:hidden">
-        <PensionPointsBanner />
-      </div>
 
       <PensionStatCards />
 
