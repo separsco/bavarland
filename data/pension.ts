@@ -2,18 +2,11 @@ import type { PlanTone } from "@/data/dashboard";
 
 export const pensionStats = [
   {
-    id: "presence",
-    title: "حضور در پانسیون",
-    icon: "pension-stat-presence",
+    id: "goals",
+    title: "تحقق اهداف",
+    icon: "pension-stat-goals",
     subtitle: "۴۶ جلسه از ۵۰ جلسه",
     percent: 92,
-  },
-  {
-    id: "absence",
-    title: "غیبت در پانسیون",
-    icon: "pension-stat-absence",
-    subtitle: "۴ جلسه از ۵۰ جلسه",
-    percent: 8,
   },
   {
     id: "delay",
@@ -23,12 +16,22 @@ export const pensionStats = [
     percent: 12,
   },
   {
-    id: "goals",
-    title: "تحقق اهداف",
-    icon: "pension-stat-goals",
+    id: "absence",
+    title: "غیبت در پانسیون",
+    icon: "pension-stat-absence",
+    subtitle: "۴ جلسه از ۵۰ جلسه",
+    percent: 8,
+  },
+
+  {
+    id: "presence",
+    title: "حضور در پانسیون",
+    icon: "pension-stat-presence",
     subtitle: "۴۶ جلسه از ۵۰ جلسه",
     percent: 92,
   },
+ 
+ 
 ] as const;
 
 export const pensionPodium = [

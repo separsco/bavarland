@@ -4,7 +4,7 @@ import { weekDays, weeklyPlan, weeklyTimeRange } from "@/data/dashboard";
 
 export function WeeklyPlanGrid() {
   return (
-    <section className="rounded-[1.75rem] bg-white p-4 shadow-sm shadow-navy/5 sm:p-6">
+    <section className="rounded-2xl bg-white p-4 shadow-sm shadow-navy/5 sm:p-6">
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-2">
           <CalendarDays className="size-5 text-brand-blue" />
@@ -15,7 +15,7 @@ export function WeeklyPlanGrid() {
 
         <button
           type="button"
-          className="inline-flex items-center gap-2 rounded-full bg-navy px-3 py-2 text-sm font-medium text-white"
+          className="inline-flex items-center gap-2 rounded-full bg-brand-blue px-3 py-2.5 text-sm font-medium text-white"
         >
           <ChevronRight className="size-4" />
           هفته جاری

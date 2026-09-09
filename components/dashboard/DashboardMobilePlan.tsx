@@ -10,7 +10,7 @@ export function DashboardMobilePlan({
   title = "برنامه مطالعاتی کل هفته",
 }: DashboardTodayPlanProps) {
   return (
-    <section className="rounded-[1.75rem] bg-white p-4 shadow-sm shadow-navy/5 sm:p-5">
+    <section className="rounded-2xl bg-white p-4 shadow-sm shadow-navy/5 sm:p-5">
       <div className="mb-4 flex items-center justify-between gap-3">
         <div className="flex min-w-0 items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">

@@ -1,6 +1,6 @@
 import { DashboardIcon } from "@/components/dashboard/DashboardIcon";
-import { MediaSlot } from "@/components/ui/MediaSlot";
 import { pensionPodium, pensionRankList } from "@/data/pension";
+import { toPersianDigits } from "@/data/otp";
 
 const rankBadgeClasses: Record<number, string> = {
   1: "bg-amber-400 text-navy",
@@ -10,12 +10,17 @@ const rankBadgeClasses: Record<number, string> = {
 
 export function PensionRanking() {
   return (
-    <section className="rounded-[1.75rem] bg-white p-4 shadow-sm shadow-navy/5 sm:p-5">
-      <div className="mb-6 flex items-center gap-2">
-        <DashboardIcon label="pension-ranking-icon" className="size-5" />
+    <section className="rounded-2xl bg-white p-4 shadow-sm shadow-navy/5 sm:p-5">
+      <div className="mb-6 flex items-center gap-2 border-b border-gray-200 py-2.5">
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M9.15957 11.62C9.12957 11.62 9.10957 11.62 9.07957 11.62C9.02957 11.61 8.95957 11.61 8.89957 11.62C5.99957 11.53 3.80957 9.25 3.80957 6.44C3.80957 3.58 6.13957 1.25 8.99957 1.25C11.8596 1.25 14.1896 3.58 14.1896 6.44C14.1796 9.25 11.9796 11.53 9.18957 11.62C9.17957 11.62 9.16957 11.62 9.15957 11.62ZM8.99957 2.75C6.96957 2.75 5.30957 4.41 5.30957 6.44C5.30957 8.44 6.86957 10.05 8.85957 10.12C8.91957 10.11 9.04957 10.11 9.17957 10.12C11.1396 10.03 12.6796 8.42 12.6896 6.44C12.6896 4.41 11.0296 2.75 8.99957 2.75Z" fill="#23242E" />
+          <path d="M16.5394 11.75C16.5094 11.75 16.4794 11.75 16.4494 11.74C16.0394 11.78 15.6194 11.49 15.5794 11.08C15.5394 10.67 15.7894 10.3 16.1994 10.25C16.3194 10.24 16.4494 10.24 16.5594 10.24C18.0194 10.16 19.1594 8.96 19.1594 7.49C19.1594 5.97 17.9294 4.74 16.4094 4.74C15.9994 4.75 15.6594 4.41 15.6594 4C15.6594 3.59 15.9994 3.25 16.4094 3.25C18.7494 3.25 20.6594 5.16 20.6594 7.5C20.6594 9.8 18.8594 11.66 16.5694 11.75C16.5594 11.75 16.5494 11.75 16.5394 11.75Z" fill="#23242E" />
+          <path d="M9.16961 22.55C7.20961 22.55 5.23961 22.05 3.74961 21.05C2.35961 20.13 1.59961 18.87 1.59961 17.5C1.59961 16.13 2.35961 14.86 3.74961 13.93C6.74961 11.94 11.6096 11.94 14.5896 13.93C15.9696 14.85 16.7396 16.11 16.7396 17.48C16.7396 18.85 15.9796 20.12 14.5896 21.05C13.0896 22.05 11.1296 22.55 9.16961 22.55ZM4.57961 15.19C3.61961 15.83 3.09961 16.65 3.09961 17.51C3.09961 18.36 3.62961 19.18 4.57961 19.81C7.06961 21.48 11.2696 21.48 13.7596 19.81C14.7196 19.17 15.2396 18.35 15.2396 17.49C15.2396 16.64 14.7096 15.82 13.7596 15.19C11.2696 13.53 7.06961 13.53 4.57961 15.19Z" fill="#23242E" />
+          <path d="M18.3397 20.75C17.9897 20.75 17.6797 20.51 17.6097 20.15C17.5297 19.74 17.7897 19.35 18.1897 19.26C18.8197 19.13 19.3997 18.88 19.8497 18.53C20.4197 18.1 20.7297 17.56 20.7297 16.99C20.7297 16.42 20.4197 15.88 19.8597 15.46C19.4197 15.12 18.8697 14.88 18.2197 14.73C17.8197 14.64 17.5597 14.24 17.6497 13.83C17.7397 13.43 18.1397 13.17 18.5497 13.26C19.4097 13.45 20.1597 13.79 20.7697 14.26C21.6997 14.96 22.2297 15.95 22.2297 16.99C22.2297 18.03 21.6897 19.02 20.7597 19.73C20.1397 20.21 19.3597 20.56 18.4997 20.73C18.4397 20.75 18.3897 20.75 18.3397 20.75Z" fill="#23242E" />
+        </svg>
         <h2 className="text-base font-extrabold text-foreground">رتبه کیمیا در پانسیون</h2>
       </div>
-
       <div className="mb-6 flex items-end justify-center gap-4">
         {pensionPodium.map((person) => (
           <div
@@ -23,11 +28,11 @@ export function PensionRanking() {
             className={`flex flex-col items-center ${person.rank === 1 ? "-translate-y-3" : ""}`}
           >
             <div className="relative">
-              <MediaSlot
-                label={person.avatar}
-                className={`rounded-full bg-sky-soft ${
-                  person.rank === 1 ? "size-16" : "size-14"
-                }`}
+              <img
+                // label={person.avatar}
+                src='/images/coverdashboard.svg'
+                className={`rounded-full bg-sky-soft ${person.rank === 1 ? "size-16" : "size-14"
+                  }`}
               />
               <span
                 className={`absolute -bottom-1 left-1/2 flex size-5 -translate-x-1/2 items-center justify-center rounded-full text-[10px] font-bold ${rankBadgeClasses[person.rank]}`}
@@ -41,21 +46,21 @@ export function PensionRanking() {
         ))}
       </div>
 
-      <ul className="space-y-3">
+      <ul className="divide-y divide-[#F2F2F3]">
         {pensionRankList.map((person) => (
-          <li
-            key={person.rank}
-            className="flex items-center gap-3 rounded-2xl bg-sky-soft/70 px-3 py-2.5"
-          >
-            <span className="w-5 text-sm font-bold text-muted">{person.rank}</span>
+          <li key={person.rank} className="flex items-center gap-3 py-3">
+            <span className="w-5 text-sm font-bold text-muted">
+              {toPersianDigits(person.rank)}
+            </span>
+            <img
+              src="/images/coverdashboard.svg"
+              alt=""
+              className="size-9 shrink-0 rounded-full object-cover"
+            />
             <p className="min-w-0 flex-1 text-sm font-semibold text-foreground">
               {person.name}
             </p>
             <span className="text-xs text-muted">{person.xp}</span>
-            <MediaSlot
-              label={person.avatar}
-              className="size-9 shrink-0 rounded-full bg-sky"
-            />
           </li>
         ))}
       </ul>

@@ -24,7 +24,7 @@ const statusStyles = {
 
 export function PlanningMainPanel() {
   return (
-    <section className="rounded-[1.75rem] bg-white p-4 shadow-sm shadow-navy/5 sm:p-6">
+    <section className="rounded-2xl bg-white p-4 shadow-sm shadow-navy/5 sm:p-6">
       <div className="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div className="inline-flex items-center gap-2 rounded-2xl bg-brand-blue px-3 py-2 text-sm font-semibold text-white">
           <DashboardIcon
